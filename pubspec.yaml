@@ -11,6 +11,8 @@ dependencies:
   flutter: 
     sdk: flutter
   sizer: ^2.0.13
+  font_awesome_flutter: ^9.1.0
+  flutter_svg: ^0.22.0
 
 dev_dependencies: 
   flutter_test: 
@@ -18,4 +20,6 @@ dev_dependencies:
 
 flutter: 
   uses-material-design: true
+  assets:
+    - assets/img/
 

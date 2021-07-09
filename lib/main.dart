@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 import 'app/routes/app_pages.dart';
+import 'package:flutter/services.Dart';
 
 void main() {
   runApp(
@@ -18,10 +20,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.white, // status
+      statusBarIconBrightness: Brightness.dark,
+      systemNavigationBarColor: Colors.white,
+      systemNavigationBarIconBrightness: Brightness.dark,
+    ));
     return Sizer(
       builder: (context, orientation, deviceType) => GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: "Application",
+        theme: ThemeData(
+          primaryColor: Colors.green,
+        ),
         initialRoute: AppPages.INITIAL,
         getPages: AppPages.routes,
       ),
