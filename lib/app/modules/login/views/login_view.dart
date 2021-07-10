@@ -1,7 +1,7 @@
 import 'package:anuncios_ui/app/modules/login/views/components/or_divider.dart';
 import 'package:anuncios_ui/app/modules/login/views/components/rounded_button.dart';
 import 'package:anuncios_ui/app/modules/login/views/components/rounded_input_field.dart';
-import 'package:anuncios_ui/app/modules/login/views/components/rounded_input_password.dart';
+import 'package:anuncios_ui/app/modules/login/views/components/rounded_password_field.dart';
 import 'package:anuncios_ui/app/modules/login/views/components/social_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -44,9 +44,11 @@ class LoginView extends GetView<LoginController> {
                   hintText: "Email",
                   onChanged: (value) {},
                 ),
-                RoundedInputPassword(
+                RoundedPasswordField(
                   hintText: "Ingrese su Contraseña",
-                  onChanged: (value) {},
+                  onChanged: (value) {
+                    print(value);
+                  },
                 ),
                 RoundedButton(
                   text: "Iniciar sesión",
