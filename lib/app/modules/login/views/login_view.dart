@@ -21,7 +21,7 @@ class LoginView extends GetView<LoginController> {
         child: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.only(top: 10.h),
-            height: 90.h,
+            height: 100.h,
             width: 100.w,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -56,26 +56,28 @@ class LoginView extends GetView<LoginController> {
                   color: Color(0xff15852F),
                 ),
                 SizedBox(height: 1.h),
-                OrDivider(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SocialIcon(
-                      iconSrc: FontAwesomeIcons.facebook,
-                      press: () {},
-                      color: Colors.blue,
-                    ),
-                    SocialIcon(
-                      iconSrc: FontAwesomeIcons.twitter,
-                      press: () {},
-                      color: Colors.lightBlueAccent.shade400,
-                    ),
-                    SocialIcon(
-                      iconSrc: FontAwesomeIcons.google,
-                      press: () {},
-                      color: Colors.red,
-                    ),
-                  ],
+                Expanded(child: OrDivider()),
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SocialIcon(
+                        iconSrc: FontAwesomeIcons.facebook,
+                        press: () {},
+                        color: Colors.blue,
+                      ),
+                      SocialIcon(
+                        iconSrc: FontAwesomeIcons.twitter,
+                        press: () {},
+                        color: Colors.lightBlueAccent.shade400,
+                      ),
+                      SocialIcon(
+                        iconSrc: FontAwesomeIcons.google,
+                        press: () {},
+                        color: Colors.red,
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
