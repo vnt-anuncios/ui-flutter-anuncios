@@ -1,3 +1,4 @@
+import 'package:anuncios_ui/app/global/main_drawer.dart';
 import 'package:anuncios_ui/app/modules/home/views/components/anuncios_home_page.dart';
 import 'package:anuncios_ui/app/modules/home/views/components/setting_home_page.dart';
 import 'package:anuncios_ui/app/routes/app_pages.dart';
@@ -12,6 +13,7 @@ import 'components/anuncios_destacados.dart';
 import 'components/main_category.dart';
 
 class HomeView extends GetView<HomeController> {
+  final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
   final List<CategoriaItem> item = [
     CategoriaItem(title: "Motor", svgAssets: "assets/categoria/motor.svg"),
     CategoriaItem(
@@ -32,7 +34,9 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
       backgroundColor: Colors.white,
+      endDrawer: MainDrawer(),
       appBar: AppBar(
         title: Text('HomeView'),
         centerTitle: true,
@@ -91,6 +95,13 @@ class HomeView extends GetView<HomeController> {
         notchedShape: CircularNotchedRectangle(),
         onTabSelected: (value) {
           print(value);
+          if (value == 3) {
+            if (scaffoldKey.currentState!.isEndDrawerOpen) {
+              scaffoldKey.currentState!.openDrawer();
+            } else {
+              scaffoldKey.currentState!.openEndDrawer();
+            }
+          }
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
