@@ -1,4 +1,3 @@
-import 'package:anuncios_ui/app/global/main_drawer.dart';
 import 'package:anuncios_ui/app/modules/home/views/components/anuncios_home_page.dart';
 import 'package:anuncios_ui/app/modules/home/views/components/setting_home_page.dart';
 import 'package:anuncios_ui/app/routes/app_pages.dart';
@@ -36,7 +35,6 @@ class HomeView extends GetView<HomeController> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Colors.white,
-      endDrawer: MainDrawer(),
       appBar: AppBar(
         title: Text('HomeView'),
         centerTitle: true,
@@ -82,8 +80,8 @@ class HomeView extends GetView<HomeController> {
       ),
       bottomNavigationBar: SettingHomePage(
         items: [
+          BottonAppBarItem(Icons.home_outlined, "Home", Routes.LOGIN),
           BottonAppBarItem(Icons.search, "Buscar", Routes.LOGIN),
-          BottonAppBarItem(Icons.notifications_none, "Busquedas", Routes.LOGIN),
           BottonAppBarItem(
               Icons.favorite_border_outlined, "Favoritos", Routes.LOGIN),
           BottonAppBarItem(Icons.person_outline, "Perfil", Routes.LOGIN),
