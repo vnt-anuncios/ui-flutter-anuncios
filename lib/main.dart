@@ -32,6 +32,12 @@ class MyApp extends StatelessWidget {
         title: "Application",
         theme: ThemeData(
           primaryColor: Colors.green,
+          textButtonTheme: TextButtonThemeData(
+            style: TextButton.styleFrom(
+              primary: Colors.green,
+            ),
+          ),
+          accentColor: Colors.greenAccent,
         ),
         initialRoute: AppPages.INITIAL,
         getPages: AppPages.routes,
