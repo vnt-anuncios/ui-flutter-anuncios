@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import 'package:anuncios_ui/app/modules/categoria/bindings/categoria_binding.dart';
+import 'package:anuncios_ui/app/modules/categoria/views/categoria_view.dart';
 import 'package:anuncios_ui/app/modules/home/bindings/home_binding.dart';
 import 'package:anuncios_ui/app/modules/home/views/home_view.dart';
 import 'package:anuncios_ui/app/modules/login/bindings/login_binding.dart';
@@ -22,6 +24,11 @@ class AppPages {
       name: _Paths.LOGIN,
       page: () => LoginView(),
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: _Paths.CATEGORIA,
+      page: () => CategoriaView(),
+      binding: CategoriaBinding(),
     ),
   ];
 }

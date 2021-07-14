@@ -1,5 +1,7 @@
+import 'package:anuncios_ui/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class MainCategoria extends StatelessWidget {
@@ -24,6 +26,8 @@ class MainCategoria extends StatelessWidget {
                     svgAssets: "assets/categoria/ver_mas.svg"),
                 onPress: () {
                   print("holamundo  ver mas categorias");
+                  //Get.toNamed(Routes.CATEGORIA);
+                  Navigator.of(context).pushNamed(Routes.CATEGORIA);
                 });
           }
           return ItemCard(
