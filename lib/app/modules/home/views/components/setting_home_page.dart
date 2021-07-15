@@ -34,7 +34,6 @@ class _SettingHomePageState extends State<SettingHomePage> {
 
   _updateIndex(int index) {
     widget.onTabSelected(index);
-    Get.toNamed(widget.items[index].nav);
     setState(() {
       _selectedIndex = index;
     });

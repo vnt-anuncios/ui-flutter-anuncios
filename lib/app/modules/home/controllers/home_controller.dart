@@ -3,10 +3,14 @@ import 'package:get/get.dart';
 class HomeController extends GetxController {
   //TODO: Implement HomeController
 
-  final count = 0.obs;
+  RxInt indexRx = 0.obs;
   @override
   void onInit() {
     super.onInit();
+  }
+
+  change(int index) {
+    indexRx.value = index;
   }
 
   @override
@@ -16,5 +20,4 @@ class HomeController extends GetxController {
 
   @override
   void onClose() {}
-  void increment() => count.value++;
 }

@@ -1,5 +1,6 @@
-import 'package:anuncios_ui/app/modules/home/views/components/anuncios_home_page.dart';
+import 'package:anuncios_ui/app/modules/anuncios_search/views/anuncios_search_view.dart';
 import 'package:anuncios_ui/app/modules/home/views/components/setting_home_page.dart';
+import 'package:anuncios_ui/app/modules/principal/views/principal_view.dart';
 import 'package:anuncios_ui/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
@@ -8,27 +9,14 @@ import 'package:get/get.dart';
 import '../controllers/home_controller.dart';
 import 'package:sizer/sizer.dart';
 
-import 'components/anuncios_destacados.dart';
-import 'components/main_category.dart';
-
+// ignore: must_be_immutable
 class HomeView extends GetView<HomeController> {
   final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
-  final List<CategoriaItem> item = [
-    CategoriaItem(title: "Motor", svgAssets: "assets/categoria/motor.svg"),
-    CategoriaItem(
-        title: "Inmobilaria", svgAssets: "assets/categoria/inmobiliaria.svg"),
-    CategoriaItem(title: "Empleo", svgAssets: "assets/categoria/empleos.svg"),
-    CategoriaItem(
-        title: "Formación y Libros",
-        svgAssets: "assets/categoria/formacion.svg"),
-    CategoriaItem(title: "Juegos", svgAssets: "assets/categoria/game.svg"),
-    CategoriaItem(
-        title: "Servicios", svgAssets: "assets/categoria/servicios.svg"),
-    CategoriaItem(
-        title: "Negocios", svgAssets: "assets/categoria/negocios.svg"),
-    CategoriaItem(
-        title: "asdfasdfasdfasdfsdfasdfasdfasdfasdf",
-        svgAssets: "assets/categoria/computer.svg"),
+  final listPage = [
+    PrincipalView(),
+    AnunciosSearchView(),
+    AnunciosSearchView(),
+    AnunciosSearchView(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -39,44 +27,8 @@ class HomeView extends GetView<HomeController> {
         title: Text('HomeView'),
         centerTitle: true,
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          MainCategoria(
-            items: item,
-          ),
-          TextTitle(
-            title: "Anuncios Destacados",
-            sizeText: 14.sp,
-          ),
-          AnunciosDestacados(),
-          Padding(
-            padding: EdgeInsets.only(top: 1.h),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                TextTitle(
-                  title: "Nuevos Anuncios",
-                  color: Colors.black,
-                  sizeText: 14.sp,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    print("ver mas");
-                  },
-                  child: TextTitle(
-                    title: "ver mas >>",
-                    color: Colors.blue,
-                    sizeText: 12.sp,
-                    boldT: false,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          AnunciosHomePage(),
-        ],
+      body: Obx(
+        () => listPage.elementAt(controller.indexRx.value),
       ),
       bottomNavigationBar: SettingHomePage(
         items: [
@@ -92,7 +44,6 @@ class HomeView extends GetView<HomeController> {
         selectedColor: Colors.green,
         notchedShape: CircularNotchedRectangle(),
         onTabSelected: (value) {
-          print(value);
           if (value == 3) {
             print(scaffoldKey.currentState?.isEndDrawerOpen);
             if (scaffoldKey.currentState!.isEndDrawerOpen) {
@@ -100,7 +51,9 @@ class HomeView extends GetView<HomeController> {
             } else {
               scaffoldKey.currentState!.openEndDrawer();
             }
-          } else {}
+          } else {
+            controller.change(value);
+          }
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
