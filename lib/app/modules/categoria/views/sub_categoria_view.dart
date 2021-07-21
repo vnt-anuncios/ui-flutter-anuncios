@@ -1,6 +1,6 @@
 import 'package:anuncios_ui/app/global/list_item.dart';
 import 'package:anuncios_ui/app/modules/categoria/views/componentes/search_field.dart';
-import 'package:anuncios_ui/app/modules/home/views/components/main_category.dart';
+import 'package:anuncios_ui/app/modules/principal/views/components/main_category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
