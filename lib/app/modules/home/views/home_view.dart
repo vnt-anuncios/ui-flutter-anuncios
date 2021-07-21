@@ -20,86 +20,58 @@ class HomeView extends GetView<HomeController> {
   ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text('HomeView'),
-        centerTitle: true,
-      ),
-      body: Obx(
-        () => listPage.elementAt(controller.indexRx.value),
-      ),
-      bottomNavigationBar: SettingHomePage(
-        items: [
-          BottonAppBarItem(Icons.home_outlined, "Home", Routes.LOGIN),
-          BottonAppBarItem(Icons.search, "Buscar", Routes.LOGIN),
-          BottonAppBarItem(
-              Icons.favorite_border_outlined, "Favoritos", Routes.LOGIN),
-          BottonAppBarItem(Icons.person_outline, "Perfil", Routes.LOGIN),
-        ],
-        centerItemText: "Publicar",
+    return SafeArea(
+      child: Scaffold(
+        key: scaffoldKey,
         backgroundColor: Colors.white,
-        color: Colors.grey.shade500,
-        selectedColor: Colors.green,
-        notchedShape: CircularNotchedRectangle(),
-        onTabSelected: (value) {
-          if (value == 3) {
-            print(scaffoldKey.currentState?.isEndDrawerOpen);
-            if (scaffoldKey.currentState!.isEndDrawerOpen) {
-              scaffoldKey.currentState!.openEndDrawer();
+        /*appBar: AppBar(
+          title: Text('HomeView'),
+          centerTitle: true,
+        ),*/
+        body: Obx(
+          () => listPage.elementAt(controller.indexRx.value),
+        ),
+        bottomNavigationBar: SettingHomePage(
+          items: [
+            BottonAppBarItem(Icons.home_outlined, "Home", Routes.LOGIN),
+            BottonAppBarItem(Icons.search, "Buscar", Routes.LOGIN),
+            BottonAppBarItem(
+                Icons.favorite_border_outlined, "Favoritos", Routes.LOGIN),
+            BottonAppBarItem(Icons.person_outline, "Perfil", Routes.LOGIN),
+          ],
+          centerItemText: "Publicar",
+          backgroundColor: Colors.white,
+          color: Colors.grey.shade500,
+          selectedColor: Colors.green,
+          notchedShape: CircularNotchedRectangle(),
+          onTabSelected: (value) {
+            if (value == 3) {
+              print(scaffoldKey.currentState?.isEndDrawerOpen);
+              if (scaffoldKey.currentState!.isEndDrawerOpen) {
+                scaffoldKey.currentState!.openEndDrawer();
+              } else {
+                scaffoldKey.currentState!.openEndDrawer();
+              }
             } else {
-              scaffoldKey.currentState!.openEndDrawer();
+              controller.change(value);
             }
-          } else {
-            controller.change(value);
-          }
-        },
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: SizedBox(
-        height: 12.h,
-        width: 12.w,
-        child: FloatingActionButton(
-          onPressed: () {},
-          backgroundColor: Colors.green,
-          elevation: 2,
-          mini: true,
-          child: Icon(
-            Icons.add_box_outlined,
-            color: Colors.white,
+          },
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: SizedBox(
+          height: 12.h,
+          width: 12.w,
+          child: FloatingActionButton(
+            onPressed: () {},
+            backgroundColor: Colors.green,
+            elevation: 2,
+            mini: true,
+            child: Icon(
+              Icons.add_box_outlined,
+              color: Colors.white,
+            ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class TextTitle extends StatelessWidget {
-  final String title;
-  final Color color;
-  final double sizeText;
-  final bool boldT;
-  const TextTitle({
-    Key? key,
-    required this.title,
-    this.color: Colors.black,
-    required this.sizeText,
-    this.boldT: true,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: 1.h, left: 2.h, right: 2.h),
-      child: Text(
-        title,
-        style: TextStyle(
-          color: color,
-          fontWeight: (boldT) ? FontWeight.bold : FontWeight.normal,
-          fontSize: sizeText,
-        ),
-        textAlign: TextAlign.left,
       ),
     );
   }

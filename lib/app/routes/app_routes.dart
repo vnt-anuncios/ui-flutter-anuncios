@@ -6,9 +6,13 @@ abstract class Routes {
 
   static const HOME = _Paths.HOME;
   static const LOGIN = _Paths.LOGIN;
+  static const ANUNCIOS_SEARCH = _Paths.ANUNCIOS_SEARCH;
+  static const PRINCIPAL = _Paths.PRINCIPAL;
 }
 
 abstract class _Paths {
   static const HOME = '/home';
   static const LOGIN = '/login';
+  static const ANUNCIOS_SEARCH = '/anuncios-search';
+  static const PRINCIPAL = '/principal';
 }

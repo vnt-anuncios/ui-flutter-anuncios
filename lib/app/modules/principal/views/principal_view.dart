@@ -1,4 +1,5 @@
-import 'package:anuncios_ui/app/modules/home/views/home_view.dart';
+import 'package:anuncios_ui/app/global/nuevo_categoria.dart';
+import 'package:anuncios_ui/app/global/text_title.dart';
 import 'package:anuncios_ui/app/modules/principal/views/components/anuncios_destacados.dart';
 import 'package:anuncios_ui/app/modules/principal/views/components/anuncios_home_page.dart';
 import 'package:anuncios_ui/app/modules/principal/views/components/main_category.dart';
@@ -10,23 +11,6 @@ import 'package:get/get.dart';
 import '../controllers/principal_controller.dart';
 
 class PrincipalView extends GetView<PrincipalController> {
-  final List<CategoriaItem> item = [
-    CategoriaItem(title: "Motor", svgAssets: "assets/categoria/motor.svg"),
-    CategoriaItem(
-        title: "Inmobilaria", svgAssets: "assets/categoria/inmobiliaria.svg"),
-    CategoriaItem(title: "Empleo", svgAssets: "assets/categoria/empleos.svg"),
-    CategoriaItem(
-        title: "Formación y Libros",
-        svgAssets: "assets/categoria/formacion.svg"),
-    CategoriaItem(title: "Juegos", svgAssets: "assets/categoria/game.svg"),
-    CategoriaItem(
-        title: "Servicios", svgAssets: "assets/categoria/servicios.svg"),
-    CategoriaItem(
-        title: "Negocios", svgAssets: "assets/categoria/negocios.svg"),
-    CategoriaItem(
-        title: "asdfasdfasdfasdfsdfasdfasdfasdfasdf",
-        svgAssets: "assets/categoria/computer.svg"),
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

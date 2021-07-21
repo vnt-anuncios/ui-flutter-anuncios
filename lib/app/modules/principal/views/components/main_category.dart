@@ -20,6 +20,7 @@ class MainCategoria extends StatelessWidget {
           if (index == cantidadVisual - 1) {
             return ItemCard(
                 items: CategoriaItem(
+                    id: 0,
                     title: "Todas las categorias",
                     svgAssets: "assets/categoria/ver_mas.svg"),
                 onPress: () {
@@ -101,7 +102,9 @@ class ItemCard extends StatelessWidget {
 }
 
 class CategoriaItem {
+  final int id;
   final String title;
   final String svgAssets;
-  CategoriaItem({required this.title, required this.svgAssets});
+  CategoriaItem(
+      {required this.id, required this.title, required this.svgAssets});
 }
