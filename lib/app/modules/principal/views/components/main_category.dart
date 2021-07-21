@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
 
 class MainCategoria extends StatelessWidget {
+  final int cantidadVisual = 7;
   final List<CategoriaItem> items;
   const MainCategoria({Key? key, required this.items}) : super(key: key);
 
@@ -13,9 +14,19 @@ class MainCategoria extends StatelessWidget {
       child: ListView.builder(
         padding: EdgeInsets.symmetric(horizontal: 1.w, vertical: 0.5.h),
         shrinkWrap: true,
-        itemCount: items.length,
+        itemCount: cantidadVisual,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
+          if (index == cantidadVisual - 1) {
+            return ItemCard(
+                items: CategoriaItem(
+                    id: 0,
+                    title: "Todas las categorias",
+                    svgAssets: "assets/categoria/ver_mas.svg"),
+                onPress: () {
+                  print("holamundo  ver mas categorias");
+                });
+          }
           return ItemCard(
             items: items[index],
             onPress: () {
@@ -91,7 +102,9 @@ class ItemCard extends StatelessWidget {
 }
 
 class CategoriaItem {
+  final int id;
   final String title;
   final String svgAssets;
-  CategoriaItem({required this.title, required this.svgAssets});
+  CategoriaItem(
+      {required this.id, required this.title, required this.svgAssets});
 }
