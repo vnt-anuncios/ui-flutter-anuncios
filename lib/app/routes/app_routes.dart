@@ -9,6 +9,7 @@ abstract class Routes {
   static const ANUNCIOS_SEARCH = _Paths.ANUNCIOS_SEARCH;
   static const PRINCIPAL = _Paths.PRINCIPAL;
   static const CATEGORIA = _Paths.CATEGORIA;
+  static const FAVORITE_PAGE = _Paths.FAVORITE_PAGE;
 }
 
 abstract class _Paths {
@@ -17,4 +18,5 @@ abstract class _Paths {
   static const ANUNCIOS_SEARCH = '/anuncios-search';
   static const PRINCIPAL = '/principal';
   static const CATEGORIA = '/categoria';
+  static const FAVORITE_PAGE = '/favorite-page';
 }

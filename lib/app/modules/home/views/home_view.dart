@@ -1,4 +1,6 @@
+import 'package:anuncios_ui/app/global/main_drawer.dart';
 import 'package:anuncios_ui/app/modules/anuncios_search/views/anuncios_search_view.dart';
+import 'package:anuncios_ui/app/modules/favorite_page/views/favorite_page_view.dart';
 import 'package:anuncios_ui/app/modules/home/views/components/setting_home_page.dart';
 import 'package:anuncios_ui/app/modules/principal/views/principal_view.dart';
 import 'package:anuncios_ui/app/routes/app_pages.dart';
@@ -15,14 +17,15 @@ class HomeView extends GetView<HomeController> {
   final listPage = [
     PrincipalView(),
     AnunciosSearchView(),
-    AnunciosSearchView(),
-    AnunciosSearchView(),
+    FavoritePageView(),
+    FavoritePageView(),
   ];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         key: scaffoldKey,
+        endDrawer: MainDrawer(),
         backgroundColor: Colors.white,
         /*appBar: AppBar(
           title: Text('HomeView'),
