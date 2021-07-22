@@ -27,7 +27,6 @@ class HomeView extends GetView<HomeController> {
         key: scaffoldKey,
         endDrawer: MainDrawer(),
         backgroundColor: Colors.white,
-        endDrawer: MainDrawer(),
         /*appBar: AppBar(
           title: Text('HomeView'),
           centerTitle: true,
