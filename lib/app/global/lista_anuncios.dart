@@ -14,7 +14,7 @@ class Anuncios {
 List<Anuncios> anuncios = [
   Anuncios(
     15.6525,
-    "hola",
+    "titulo del producto asdfasdf  asdfasdf",
     "descripcion asdfasfjl nas jsljkdfhasjkfh jahslkjdfhs ljshdflkjash asjdhfkjl asdfkahsdm. jasndfkjadsnf lsadflkjasdf ajsdbfkjasf",
     DateTime.now(),
     "Luis Barrancos  ",
