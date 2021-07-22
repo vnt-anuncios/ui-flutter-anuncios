@@ -37,6 +37,10 @@ class MyApp extends StatelessWidget {
             style: TextButton.styleFrom(
               primary: Colors.green,
             ),
+
+          ),
+          textTheme: TextTheme(
+            
           ),
           textSelectionTheme: TextSelectionThemeData(
             cursorColor: Colors.green,

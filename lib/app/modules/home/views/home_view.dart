@@ -1,3 +1,4 @@
+import 'package:anuncios_ui/app/global/main_drawer.dart';
 import 'package:anuncios_ui/app/modules/anuncios_search/views/anuncios_search_view.dart';
 import 'package:anuncios_ui/app/modules/home/views/components/setting_home_page.dart';
 import 'package:anuncios_ui/app/modules/principal/views/principal_view.dart';
@@ -24,6 +25,7 @@ class HomeView extends GetView<HomeController> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Colors.white,
+        endDrawer: MainDrawer(),
         /*appBar: AppBar(
           title: Text('HomeView'),
           centerTitle: true,
@@ -45,6 +47,7 @@ class HomeView extends GetView<HomeController> {
           selectedColor: Colors.green,
           notchedShape: CircularNotchedRectangle(),
           onTabSelected: (value) {
+            print(value);
             if (value == 3) {
               print(scaffoldKey.currentState?.isEndDrawerOpen);
               if (scaffoldKey.currentState!.isEndDrawerOpen) {
