@@ -1,6 +1,7 @@
 import 'package:anuncios_ui/app/global/lista_anuncios.dart';
 import 'package:anuncios_ui/app/modules/anuncios_search/controllers/anuncios_search_controller.dart';
 import 'package:anuncios_ui/app/modules/anuncios_search/views/components/filtros_busqueda_view.dart';
+import 'package:anuncios_ui/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sizer/sizer.dart';
@@ -49,6 +50,10 @@ class AnunciosSearchView extends GetWidget<AnunciosSearchController> {
                         child: InkWell(
                           onTap: () {
                             print("estamos en la card");
+                            Get.toNamed(
+                              Routes.DETAILS,
+                              arguments: anuncios[index],
+                            );
                           },
                           child: Stack(
                             children: [
