@@ -14,6 +14,8 @@ import 'package:anuncios_ui/app/modules/login/bindings/login_binding.dart';
 import 'package:anuncios_ui/app/modules/login/views/login_view.dart';
 import 'package:anuncios_ui/app/modules/principal/bindings/principal_binding.dart';
 import 'package:anuncios_ui/app/modules/principal/views/principal_view.dart';
+import 'package:anuncios_ui/app/modules/profile/bindings/profile_binding.dart';
+import 'package:anuncios_ui/app/modules/profile/views/profile_view.dart';
 
 part 'app_routes.dart';
 
@@ -57,6 +59,11 @@ class AppPages {
       name: _Paths.DETAILS,
       page: () => DetailsView(),
       binding: DetailsBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE,
+      page: () => ProfileView(),
+      binding: ProfileBinding(),
     ),
   ];
 }

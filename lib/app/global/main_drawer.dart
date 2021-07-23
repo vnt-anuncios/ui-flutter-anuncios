@@ -35,7 +35,7 @@ class MainDrawer extends StatelessWidget {
                   leading: Icon(FontAwesomeIcons.user),
                   title: Text("Mi Cuenta"),
                   onTap: () {
-                    print("click mi cuenta");
+                    Get.toNamed(Routes.PROFILE);
                   },
                 ),
                 ListTile(
