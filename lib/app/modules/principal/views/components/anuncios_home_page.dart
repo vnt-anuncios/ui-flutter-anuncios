@@ -1,12 +1,20 @@
+import 'dart:math';
+
+import 'package:anuncios_ui/app/global/user.dart';
+import 'package:anuncios_ui/app/utils/numero.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sizer/sizer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AnunciosHomePage extends StatelessWidget {
   const AnunciosHomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final User user = usuario.elementAt(
+      Random().nextInt(usuario.length),
+    );
     return Expanded(
       child: ListView.builder(
         //physics: BouncingScrollPhysics(),
@@ -103,13 +111,33 @@ class AnunciosHomePage extends StatelessWidget {
                                                 MainAxisAlignment.spaceAround,
                                             children: [
                                               TextButton.icon(
-                                                onPressed: () {},
+                                                onPressed: () async {
+                                                  var whatsapp = urlWhatssap(
+                                                      numero: user.numero);
+                                                  if (await canLaunch(
+                                                      whatsapp)) {
+                                                    await launch(whatsapp);
+                                                  } else {
+                                                    throw 'could nnot launch $whatsapp';
+                                                  }
+                                                },
                                                 icon: Icon(
                                                     FontAwesomeIcons.whatsapp),
                                                 label: Text("Contactar"),
                                               ),
                                               TextButton.icon(
-                                                onPressed: () {},
+                                                onPressed: () async {
+                                                  String numero = user.numero;
+
+                                                  var telefono =
+                                                      llamar(numero: numero);
+                                                  if (await canLaunch(
+                                                      telefono)) {
+                                                    await launch(telefono);
+                                                  } else {
+                                                    throw 'could nnot launch $telefono';
+                                                  }
+                                                },
                                                 icon: Icon(Icons.phone_android),
                                                 label: Text("LLamar"),
                                               ),

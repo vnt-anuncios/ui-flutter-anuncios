@@ -32,6 +32,8 @@ class RoundedInputField extends StatelessWidget {
             color: Colors.grey.shade500,
           ),
           border: InputBorder.none,
+          focusedBorder: InputBorder.none,
+          errorBorder: InputBorder.none,
         ),
       ),
     );

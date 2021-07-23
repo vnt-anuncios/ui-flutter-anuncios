@@ -1,5 +1,7 @@
+import 'package:anuncios_ui/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class MainDrawer extends StatelessWidget {
@@ -68,7 +70,7 @@ class MainDrawer extends StatelessWidget {
                   leading: Icon(FontAwesomeIcons.signOutAlt),
                   title: Text("Cerrar sesión"),
                   onTap: () {
-                    print("click en cerrar sesion");
+                    Get.toNamed(Routes.LOGIN);
                   },
                 ),
               ],

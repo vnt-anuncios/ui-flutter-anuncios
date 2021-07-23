@@ -50,6 +50,8 @@ class _RoundedPasswordFieldState extends State<RoundedPasswordField> {
             color: Colors.grey.shade400,
           ),
           border: InputBorder.none,
+          focusedBorder: InputBorder.none,
+          errorBorder: InputBorder.none,
         ),
       ),
     );

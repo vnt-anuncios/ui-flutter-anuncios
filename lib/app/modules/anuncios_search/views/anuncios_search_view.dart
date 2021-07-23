@@ -1,11 +1,16 @@
+import 'dart:math';
+
 import 'package:anuncios_ui/app/global/lista_anuncios.dart';
+import 'package:anuncios_ui/app/global/user.dart';
 import 'package:anuncios_ui/app/modules/anuncios_search/controllers/anuncios_search_controller.dart';
 import 'package:anuncios_ui/app/modules/anuncios_search/views/components/filtros_busqueda_view.dart';
 import 'package:anuncios_ui/app/routes/app_pages.dart';
+import 'package:anuncios_ui/app/utils/numero.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'components/filtros_button.dart';
 
 class AnunciosSearchView extends GetWidget<AnunciosSearchController> {
@@ -118,6 +123,7 @@ class AnunciosSearchView extends GetWidget<AnunciosSearchController> {
 
 class DetalleCardItem extends StatelessWidget {
   final Anuncios anuncios;
+
   const DetalleCardItem({
     Key? key,
     required this.anuncios,
@@ -125,6 +131,9 @@ class DetalleCardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final User user = usuario.elementAt(
+      Random().nextInt(usuario.length),
+    );
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(left: 2.w),
@@ -223,8 +232,13 @@ class DetalleCardItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     TextButton.icon(
-                      onPressed: () {
-                        print("contactar");
+                      onPressed: () async {
+                        var whatsapp = urlWhatssap(numero: user.numero);
+                        if (await canLaunch(whatsapp)) {
+                          await launch(whatsapp);
+                        } else {
+                          throw 'could nnot launch $whatsapp';
+                        }
                       },
                       icon: Icon(
                         FontAwesomeIcons.whatsapp,
@@ -233,8 +247,15 @@ class DetalleCardItem extends StatelessWidget {
                       label: Text("Contactar"),
                     ),
                     TextButton.icon(
-                      onPressed: () {
-                        print("llamar");
+                      onPressed: () async {
+                        String numero = user.numero;
+
+                        var telefono = llamar(numero: numero);
+                        if (await canLaunch(telefono)) {
+                          await launch(telefono);
+                        } else {
+                          throw 'could nnot launch $telefono';
+                        }
                       },
                       icon: Icon(
                         Icons.phone_android_outlined,
