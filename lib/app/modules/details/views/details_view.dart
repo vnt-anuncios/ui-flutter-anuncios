@@ -1,16 +1,19 @@
-import 'package:anuncios_ui/app/global/lista_anuncios.dart';
-import 'package:anuncios_ui/app/modules/anuncios_search/views/anuncios_search_view.dart';
+
+import 'package:anuncios_ui/app/modules/anuncios_search/views/components/card_details.dart';
 import 'package:anuncios_ui/app/modules/details/views/components/image_slider.dart';
+import 'package:anuncios_ui/app/utils/numero.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../controllers/details_controller.dart';
 import 'package:sizer/sizer.dart';
 
 class DetailsView extends GetView<DetailsController> {
-  final Anuncios _anuncio = Get.arguments;
+  final _anuncio = Get.arguments[0];
+  final _user = Get.arguments[1];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -279,7 +282,14 @@ class DetailsView extends GetView<DetailsController> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     TextButton.icon(
-                      onPressed: () {},
+                      onPressed: () async {
+                        var whatsapp = urlWhatssap(numero: _user.numero);
+                        if (await canLaunch(whatsapp)) {
+                          await launch(whatsapp);
+                        } else {
+                          throw 'could nnot launch $whatsapp';
+                        }
+                      },
                       icon: Icon(
                         FontAwesomeIcons.whatsapp,
                         size: 17.sp,
@@ -292,7 +302,16 @@ class DetailsView extends GetView<DetailsController> {
                       ),
                     ),
                     TextButton.icon(
-                      onPressed: () {},
+                      onPressed: () async {
+                        String numero = _user.numero;
+
+                        var telefono = llamar(numero: numero);
+                        if (await canLaunch(telefono)) {
+                          await launch(telefono);
+                        } else {
+                          throw 'could nnot launch $telefono';
+                        }
+                      },
                       icon: Icon(
                         FontAwesomeIcons.mobileAlt,
                         size: 17.sp,

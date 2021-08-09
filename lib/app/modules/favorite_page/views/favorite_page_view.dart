@@ -1,5 +1,9 @@
-import 'package:anuncios_ui/app/global/card_anuncios_item_principal.dart';
+import 'dart:math';
+
+import 'package:anuncios_ui/app/global/card_anuncio.dart';
 import 'package:anuncios_ui/app/global/lista_anuncios.dart';
+import 'package:anuncios_ui/app/global/user.dart';
+import 'package:anuncios_ui/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -66,15 +70,18 @@ class FavoritePageView extends GetView<FavoritePageController> {
                         children: [
                           Expanded(
                             child: ListView.builder(
-                              itemCount: anuncios.length,
-                              itemBuilder: (context, index) =>
-                                  CardAnunciosItemPricipal(
-                                anuncio: anuncios[index],
-                                onPress: () {
-                                  print(anuncios[index].title);
-                                },
-                              ),
-                            ),
+                                itemCount: anuncios.length,
+                                itemBuilder: (context, index) {
+                                  User user = usuario.elementAt(
+                                      Random().nextInt(usuario.length));
+                                  return CardAnuncio(
+                                      onPress: () {
+                                        Get.toNamed(Routes.DETAILS,
+                                            arguments: [anuncios[index], user]);
+                                      },
+                                      anuncio: anuncios[index],
+                                      user: user);
+                                }),
                           ),
                         ],
                       ),

@@ -16,6 +16,8 @@ import 'package:anuncios_ui/app/modules/principal/bindings/principal_binding.dar
 import 'package:anuncios_ui/app/modules/principal/views/principal_view.dart';
 import 'package:anuncios_ui/app/modules/profile/bindings/profile_binding.dart';
 import 'package:anuncios_ui/app/modules/profile/views/profile_view.dart';
+import 'package:anuncios_ui/app/modules/recarga/bindings/recarga_binding.dart';
+import 'package:anuncios_ui/app/modules/recarga/views/recarga_view.dart';
 
 part 'app_routes.dart';
 
@@ -64,6 +66,11 @@ class AppPages {
       name: _Paths.PROFILE,
       page: () => ProfileView(),
       binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.RECARGA,
+      page: () => RecargaView(),
+      binding: RecargaBinding(),
     ),
   ];
 }

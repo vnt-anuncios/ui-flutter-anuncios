@@ -12,6 +12,7 @@ abstract class Routes {
   static const FAVORITE_PAGE = _Paths.FAVORITE_PAGE;
   static const DETAILS = _Paths.DETAILS;
   static const PROFILE = _Paths.PROFILE;
+  static const RECARGA = _Paths.RECARGA;
 }
 
 abstract class _Paths {
@@ -23,4 +24,5 @@ abstract class _Paths {
   static const FAVORITE_PAGE = '/favorite-page';
   static const DETAILS = '/details';
   static const PROFILE = '/profile';
+  static const RECARGA = '/recarga';
 }
