@@ -50,6 +50,7 @@ class MainDrawer extends StatelessWidget {
                   title: Text("Mis Favoritos"),
                   onTap: () {
                     print("click mis favoritos");
+                    Get.toNamed(Routes.FAVORITE_PAGE);
                   },
                 ),
                 ListTile(

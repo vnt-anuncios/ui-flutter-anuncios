@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:anuncios_ui/app/global/card_anuncio.dart';
 import 'package:anuncios_ui/app/global/lista_anuncios.dart';
+import 'package:anuncios_ui/app/global/text_global.dart';
 import 'package:anuncios_ui/app/global/user.dart';
 import 'package:anuncios_ui/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -19,39 +20,23 @@ class FavoritePageView extends GetView<FavoritePageController> {
         title: Text(
           'Mis Favoritos',
           style: TextStyle(
-            color: Colors.black,
-            fontSize: 15.sp,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w600,
           ),
         ),
-        backgroundColor: Colors.white,
         centerTitle: true,
-        elevation: 2,
       ),
       body: Padding(
-        padding: EdgeInsets.all(8),
+        padding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 2.w),
         child: Container(
           child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 1.w, vertical: 0),
+                padding: EdgeInsets.symmetric(horizontal: 1.w, vertical: 1.h),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "cantidad de favorito",
-                      style: TextStyle(
-                        fontSize: 13.sp,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      anuncios.length.toString(),
-                      style: TextStyle(
-                        fontSize: 13.sp,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    TextFormat(text: "cantidad de favoritos", size: 12.5.sp),
+                    TextFormat(text: anuncios.length.toString(), size: 12.5.sp),
                   ],
                 ),
               ),
