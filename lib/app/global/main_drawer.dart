@@ -53,6 +53,13 @@ class MainDrawer extends StatelessWidget {
                   },
                 ),
                 ListTile(
+                  leading: Icon(FontAwesomeIcons.moneyBillAlt),
+                  title: Text("Mis Creditos"),
+                  onTap: () {
+                    Get.toNamed(Routes.RECARGA);
+                  },
+                ),
+                ListTile(
                   leading: Icon(FontAwesomeIcons.search),
                   title: Text("Mis búsquedas"),
                   onTap: () {

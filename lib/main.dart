@@ -31,16 +31,30 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: "Application",
         theme: ThemeData(
+          dividerTheme: DividerThemeData(
+            thickness: 1.sp,
+          ),
           scaffoldBackgroundColor: Colors.white,
           primaryColor: Colors.green,
+          backgroundColor: Colors.white,
+          appBarTheme: AppBarTheme(
+            backgroundColor: Colors.white,
+            centerTitle: true,
+            elevation: 1,
+            iconTheme: IconThemeData(
+              color: Colors.green,
+              size: 12.sp,
+            ),
+          ),
+          primaryTextTheme: TextTheme(
+            headline6: TextStyle(
+              color: Colors.black,
+            ),
+          ),
           textButtonTheme: TextButtonThemeData(
             style: TextButton.styleFrom(
               primary: Colors.green,
             ),
-
-          ),
-          textTheme: TextTheme(
-            
           ),
           textSelectionTheme: TextSelectionThemeData(
             cursorColor: Colors.green,
