@@ -1,7 +1,5 @@
-import 'dart:math';
-
-import 'package:anuncios_ui/app/global/lista_anuncios.dart';
-import 'package:anuncios_ui/app/global/user.dart';
+import 'package:anuncios_ui/app/data/models/anuncio_detail.dart';
+import 'package:anuncios_ui/app/global/my_image_network.dart';
 import 'package:anuncios_ui/app/modules/anuncios_search/controllers/anuncios_search_controller.dart';
 import 'package:anuncios_ui/app/modules/anuncios_search/views/components/filtros_busqueda_view.dart';
 import 'package:anuncios_ui/app/routes/app_pages.dart';
@@ -37,83 +35,32 @@ class AnunciosSearchView extends GetWidget<AnunciosSearchController> {
                 FiltrosButton(
                   label: "Todas las categorias",
                   icon: Icons.menu,
-                  onPress: () {},
+                  onPress: () {
+                    controller.getAnunciosDetails();
+                  },
                 ),
               ],
             ),
             Expanded(
-              child: ListView.builder(
-                itemCount: anuncios.length,
-                itemBuilder: (context, index) {
-                  final User user = usuario.elementAt(
-                    Random().nextInt(usuario.length),
-                  );
-                  return SizedBox(
-                    height: 30.h,
-                    child: Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: InkWell(
-                          onTap: () {
-                            print("estamos en la card");
-                            Get.toNamed(
-                              Routes.DETAILS,
-                              arguments: [anuncios[index], user],
-                            );
-                          },
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                top: 0,
-                                right: 0,
-                                child: IconButton(
-                                  alignment: Alignment.topRight,
-                                  onPressed: () {
-                                    print("favorito");
-                                  },
-                                  icon: Icon(Icons.favorite_border_outlined),
-                                ),
-                              ),
-                              Positioned.fill(
-                                child: Row(
-                                  children: [
-                                    Column(
-                                      children: [
-                                        Expanded(
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            child: (!anuncios[index]
-                                                    .images
-                                                    .isEmpty)
-                                                ? Image.network(
-                                                    anuncios[index].images[0],
-                                                    width: 35.w,
-                                                    fit: BoxFit.cover,
-                                                  )
-                                                : Image.asset(
-                                                    "assets/img/c.jpg",
-                                                    width: 35.w,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    DetalleCardItem(
-                                      anuncios: anuncios[index],
-                                      user: user,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
+              child: Obx(
+                () => (controller.loading)
+                    ? Container(
+                        child: Center(
+                          child: SizedBox(
+                            width: 20.sp,
+                            height: 20.sp,
+                            child: CircularProgressIndicator(),
                           ),
                         ),
+                      )
+                    : ListView.builder(
+                        itemCount: controller.listAnuncio.length,
+                        itemBuilder: (context, index) {
+                          return CardAnuncioSearch(
+                            anuncioDetails: controller.listAnuncio[index],
+                          );
+                        },
                       ),
-                    ),
-                  );
-                },
               ),
             ),
           ],
@@ -123,3 +70,69 @@ class AnunciosSearchView extends GetWidget<AnunciosSearchController> {
   }
 }
 
+class CardAnuncioSearch extends StatelessWidget {
+  const CardAnuncioSearch({
+    Key? key,
+    required this.anuncioDetails,
+  }) : super(key: key);
+
+  final AnuncioDetails anuncioDetails;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 26.h,
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(5),
+          child: InkWell(
+            onTap: () {
+              Get.toNamed(
+                Routes.DETAILS,
+                arguments: anuncioDetails,
+              );
+            },
+            child: Stack(
+              children: [
+                Positioned(
+                  top: 0,
+                  right: 0,
+                  child: IconButton(
+                    alignment: Alignment.topRight,
+                    onPressed: () {
+                      print("favorito");
+                    },
+                    icon: Icon(Icons.favorite_border_outlined),
+                  ),
+                ),
+                Positioned.fill(
+                  child: Row(
+                    children: [
+                      Column(
+                        children: [
+                          Expanded(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: SizedBox(
+                                width: 35.w,
+                                child:
+                                    MyImageNetWork(fotos: anuncioDetails.fotos),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      DetalleCardItem(
+                        anuncios: anuncioDetails,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -66,7 +66,9 @@ class HomeView extends GetView<HomeController> {
           height: 12.h,
           width: 12.w,
           child: FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              controller.getAnunciosDestacados();
+            },
             backgroundColor: Colors.green,
             elevation: 2,
             mini: true,

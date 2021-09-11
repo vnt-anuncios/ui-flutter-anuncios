@@ -1,3 +1,9 @@
+import 'package:anuncios_ui/app/data/provider/anuncio_destacados_provider.dart';
+import 'package:anuncios_ui/app/data/provider/anuncio_detail_provider.dart';
+import 'package:anuncios_ui/app/data/provider/categoria_anuncio_provider.dart';
+import 'package:anuncios_ui/app/data/services/anuncio_destacados_service.dart';
+import 'package:anuncios_ui/app/data/services/anuncio_detail_service.dart';
+import 'package:anuncios_ui/app/data/services/categoria_anuncio_service.dart';
 import 'package:anuncios_ui/app/modules/anuncios_search/controllers/anuncios_search_controller.dart';
 import 'package:get/get.dart';
 
@@ -8,10 +14,23 @@ class HomeBinding extends Bindings {
   void dependencies() {
     print("dependencias de home");
     Get.lazyPut<HomeController>(
-      () => HomeController(),
+      () => HomeController(
+        AnuncioDetailService(
+          anuncioDetailProvider: AnuncioDetailProvider(),
+        ),
+        AnuncioDestacadoService(
+          AnuncioDestacadosProvider(),
+        ),
+      ),
     );
+    //dependencias para el search controller
     Get.lazyPut<AnunciosSearchController>(
-      () => AnunciosSearchController(),
+      () => AnunciosSearchController(
+        CategoriaAnuncioService(
+          CategoriaAnuncioProvider(),
+          AnuncioDetailProvider(),
+        ),
+      ),
       fenix: false,
     );
   }

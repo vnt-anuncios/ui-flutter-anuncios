@@ -1,5 +1,6 @@
 import 'package:anuncios_ui/app/global/nuevo_categoria.dart';
 import 'package:anuncios_ui/app/global/text_title.dart';
+import 'package:anuncios_ui/app/modules/home/controllers/home_controller.dart';
 import 'package:anuncios_ui/app/modules/principal/views/components/anuncios_destacados.dart';
 import 'package:anuncios_ui/app/modules/principal/views/components/anuncios_home_page.dart';
 import 'package:anuncios_ui/app/modules/principal/views/components/main_category.dart';
@@ -10,7 +11,8 @@ import 'package:get/get.dart';
 
 import '../controllers/principal_controller.dart';
 
-class PrincipalView extends GetView<PrincipalController> {
+class PrincipalView extends StatelessWidget {
+  final controller = Get.find<HomeController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +26,16 @@ class PrincipalView extends GetView<PrincipalController> {
             title: "Anuncios Destacados",
             sizeText: 14.sp,
           ),
-          AnunciosDestacados(),
+          SizedBox(
+            height: 28.h,
+            child: Obx(
+              () => (controller.isLoadingDestacados)
+                  ? loadingAnuncio()
+                  : AnunciosDestacados(
+                      listDestacados: controller.listAnuncioDestacados,
+                    ),
+            ),
+          ),
           Padding(
             padding: EdgeInsets.only(top: 1.h),
             child: Row(
@@ -50,8 +61,23 @@ class PrincipalView extends GetView<PrincipalController> {
               ],
             ),
           ),
-          AnunciosHomePage(),
+          Expanded(
+            child: Obx(
+              () => (controller.isLoading)
+                  ? loadingAnuncio()
+                  : AnunciosHomePage(
+                      listAnuncio: controller.listAnuncioDetails),
+            ),
+          )
         ],
+      ),
+    );
+  }
+
+  loadingAnuncio() {
+    return Container(
+      child: Center(
+        child: CircularProgressIndicator(),
       ),
     );
   }

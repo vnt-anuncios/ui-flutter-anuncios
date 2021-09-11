@@ -59,13 +59,14 @@ class FavoritePageView extends GetView<FavoritePageController> {
                                 itemBuilder: (context, index) {
                                   User user = usuario.elementAt(
                                       Random().nextInt(usuario.length));
-                                  return CardAnuncio(
+                                  return Container();
+                                  /*CardAnuncio(
                                       onPress: () {
                                         Get.toNamed(Routes.DETAILS,
                                             arguments: [anuncios[index], user]);
                                       },
                                       anuncio: anuncios[index],
-                                      user: user);
+                                      user: user);*/
                                 }),
                           ),
                         ],

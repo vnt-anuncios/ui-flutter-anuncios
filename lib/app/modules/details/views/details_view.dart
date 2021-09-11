@@ -1,4 +1,3 @@
-
 import 'package:anuncios_ui/app/modules/anuncios_search/views/components/card_details.dart';
 import 'package:anuncios_ui/app/modules/details/views/components/image_slider.dart';
 import 'package:anuncios_ui/app/utils/numero.dart';
@@ -12,8 +11,7 @@ import '../controllers/details_controller.dart';
 import 'package:sizer/sizer.dart';
 
 class DetailsView extends GetView<DetailsController> {
-  final _anuncio = Get.arguments[0];
-  final _user = Get.arguments[1];
+  final _anuncioDetail = Get.arguments;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +45,7 @@ class DetailsView extends GetView<DetailsController> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  ImageSlider(images: _anuncio.images),
+                  ImageSlider(images: _anuncioDetail.fotos),
                   SizedBox(
                     height: 1.h,
                   ),
@@ -66,7 +64,8 @@ class DetailsView extends GetView<DetailsController> {
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             TextCustomApp(
-                              title: _anuncio.title.toUpperCase(),
+                              title: _anuncioDetail.anuncio.titulo
+                                  .toUpperCase(), //titulo
                               color: Colors.black,
                               fontSize: 11.sp,
                             ),
@@ -84,7 +83,9 @@ class DetailsView extends GetView<DetailsController> {
                                   width: 1.5.w,
                                 ),
                                 TextCustomApp(
-                                  title: _anuncio.date.toIso8601String(),
+                                  title: _anuncioDetail
+                                      .anuncio.fecha_publicacion
+                                      .toIso8601String(), //fecha del anuncio
                                   color: Colors.grey.shade500,
                                   fontSize: 11.sp,
                                 ),
@@ -104,7 +105,8 @@ class DetailsView extends GetView<DetailsController> {
                                   width: 1.5.w,
                                 ),
                                 TextCustomApp(
-                                  title: _anuncio.ubicacion,
+                                  title: _anuncioDetail.anuncio
+                                      .ubicacion, //ubicacion del anuncio
                                   color: Colors.grey.shade500,
                                   fontSize: 11.sp,
                                 ),
@@ -114,7 +116,8 @@ class DetailsView extends GetView<DetailsController> {
                               height: 0.7.h,
                             ),
                             TextCustomApp(
-                              title: _anuncio.precio.toString() + " Bs",
+                              title: _anuncioDetail.anuncio.precio.toString() +
+                                  " Bs",
                               color: Colors.green,
                               fontSize: 13.sp,
                               weight: true,
@@ -190,7 +193,8 @@ class DetailsView extends GetView<DetailsController> {
                                   weight: true,
                                 ),
                                 TextCustomApp(
-                                    title: _anuncio.categoria,
+                                    title: _anuncioDetail
+                                        .categoria.nombre, //categoria
                                     color: Colors.black,
                                     fontSize: 11.sp),
                               ],
@@ -204,7 +208,9 @@ class DetailsView extends GetView<DetailsController> {
                                   weight: true,
                                 ),
                                 TextCustomApp(
-                                    title: _anuncio.date.toString(),
+                                    title: _anuncioDetail
+                                        .anuncio.fecha_publicacion
+                                        .toString(),
                                     color: Colors.black,
                                     fontSize: 11.sp),
                               ],
@@ -218,7 +224,8 @@ class DetailsView extends GetView<DetailsController> {
                                   weight: true,
                                 ),
                                 TextCustomApp(
-                                    title: _anuncio.precio.toString(),
+                                    title: _anuncioDetail.anuncio.precio
+                                        .toString(),
                                     color: Colors.black,
                                     fontSize: 11.sp),
                               ],
@@ -246,7 +253,7 @@ class DetailsView extends GetView<DetailsController> {
                                   weight: true,
                                 ),
                                 TextCustomApp(
-                                    title: _anuncio.ubicacion,
+                                    title: _anuncioDetail.anuncio.ubicacion,
                                     color: Colors.black,
                                     fontSize: 11.sp),
                               ],
@@ -255,7 +262,7 @@ class DetailsView extends GetView<DetailsController> {
                               height: 5.h,
                             ),
                             Text(
-                              _anuncio.descripcion,
+                              _anuncioDetail.anuncio.descripcion,
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 11.sp,
@@ -283,7 +290,8 @@ class DetailsView extends GetView<DetailsController> {
                   children: [
                     TextButton.icon(
                       onPressed: () async {
-                        var whatsapp = urlWhatssap(numero: _user.numero);
+                        var whatsapp =
+                            urlWhatssap(numero: _anuncioDetail.user.telefono);
                         if (await canLaunch(whatsapp)) {
                           await launch(whatsapp);
                         } else {
@@ -303,7 +311,7 @@ class DetailsView extends GetView<DetailsController> {
                     ),
                     TextButton.icon(
                       onPressed: () async {
-                        String numero = _user.numero;
+                        String numero = _anuncioDetail.user.telefono;
 
                         var telefono = llamar(numero: numero);
                         if (await canLaunch(telefono)) {

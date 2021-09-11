@@ -1,5 +1,4 @@
-import 'package:anuncios_ui/app/global/lista_anuncios.dart';
-import 'package:anuncios_ui/app/global/user.dart';
+import 'package:anuncios_ui/app/data/models/anuncio_detail.dart';
 import 'package:anuncios_ui/app/utils/numero.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -7,13 +6,11 @@ import 'package:sizer/sizer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DetalleCardItem extends StatelessWidget {
-  final User user;
-  final Anuncios anuncios;
+  final AnuncioDetails anuncios;
 
   const DetalleCardItem({
     Key? key,
     required this.anuncios,
-    required this.user,
   }) : super(key: key);
 
   @override
@@ -31,13 +28,13 @@ class DetalleCardItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   TextCustomApp(
-                    title: anuncios.precio.toString() + " BS",
+                    title: anuncios.anuncio.precio.toString() + " BS",
                     fontSize: 12.sp,
                     color: Colors.red,
                     weight: true,
                   ),
                   TextCustomApp(
-                    title: anuncios.title.toUpperCase(),
+                    title: anuncios.anuncio.titulo.toUpperCase(),
                     fontSize: 10.sp,
                     color: Colors.black,
                     weight: true,
@@ -47,7 +44,7 @@ class DetalleCardItem extends StatelessWidget {
                     children: [
                       Expanded(
                         child: TextCustomApp(
-                          title: anuncios.descripcion,
+                          title: anuncios.anuncio.descripcion,
                           fontSize: 11.sp,
                           color: Colors.black,
                           maxLine: 4,
@@ -68,44 +65,51 @@ class DetalleCardItem extends StatelessWidget {
                           SizedBox(
                             width: 1.w,
                           ),
-                          TextCustomApp(
-                            title: anuncios.ubicacion,
-                            fontSize: 11.sp,
-                            color: Colors.grey.shade400,
+                          Expanded(
+                            child: TextCustomApp(
+                              title: anuncios.anuncio.ubicacion,
+                              fontSize: 11.sp,
+                              color: Colors.grey.shade500,
+                            ),
                           )
                         ],
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          TextCustomApp(
-                            title: "2021-05-02",
-                            fontSize: 10.sp,
-                            color: Colors.grey.shade400,
-                          ),
-                          Container(
-                            padding: EdgeInsets.all(1),
-                            decoration: BoxDecoration(
-                              color: Colors.red,
-                              borderRadius: BorderRadius.circular(
-                                5,
-                              ),
-                            ),
+                          Expanded(
                             child: TextCustomApp(
-                              title: "destacado",
+                              title: getDateFormat(
+                                  anuncios.anuncio.fecha_publicacion),
                               fontSize: 10.sp,
-                              color: Colors.white,
+                              color: Colors.grey.shade400,
                             ),
                           ),
+                          (anuncios.destacados != null)
+                              ? Container(
+                                  padding: EdgeInsets.all(1),
+                                  decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    borderRadius: BorderRadius.circular(
+                                      5,
+                                    ),
+                                  ),
+                                  child: TextCustomApp(
+                                    title: "destacado",
+                                    fontSize: 10.sp,
+                                    color: Colors.white,
+                                  ),
+                                )
+                              : Container(),
                         ],
                       ),
                     ],
                   ),
-                  TextCustomApp(
-                    title: "auto - 4 patas - 4 puertas - etx -  asjdfs - asdf",
-                    color: Colors.grey.shade500,
-                    fontSize: 11.sp,
-                  ),
+                  // TextCustomApp(
+                  //   title: "auto - 4 patas - 4 puertas - etx -  asjdfs - asdf",
+                  //   color: Colors.grey.shade500,
+                  //   fontSize: 11.sp,
+                  // ),
                 ],
               ),
             ),
@@ -117,7 +121,8 @@ class DetalleCardItem extends StatelessWidget {
                   children: [
                     TextButton.icon(
                       onPressed: () async {
-                        var whatsapp = urlWhatssap(numero: user.numero);
+                        var whatsapp =
+                            urlWhatssap(numero: anuncios.user.telefono);
                         if (await canLaunch(whatsapp)) {
                           await launch(whatsapp);
                         } else {
@@ -132,7 +137,7 @@ class DetalleCardItem extends StatelessWidget {
                     ),
                     TextButton.icon(
                       onPressed: () async {
-                        String numero = user.numero;
+                        String numero = anuncios.user.telefono;
                         var telefono = llamar(numero: numero);
                         if (await canLaunch(telefono)) {
                           await launch(telefono);
@@ -154,6 +159,14 @@ class DetalleCardItem extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String getDateFormat(DateTime date) {
+    return date.day.toString() +
+        " - " +
+        date.month.toString() +
+        " - " +
+        date.year.toString();
   }
 }
 

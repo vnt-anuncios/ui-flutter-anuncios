@@ -1,9 +1,10 @@
+import 'package:anuncios_ui/app/data/models/foto.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class ImageSlider extends StatefulWidget {
-  final List<String> images;
+  final List<Foto> images;
   ImageSlider({Key? key, required this.images}) : super(key: key);
 
   @override
@@ -58,7 +59,14 @@ class _ImageSliderState extends State<ImageSlider> {
     );
   }
 
-  List<Widget> listImage(List<String> images) {
+  List<Widget> listImage(List<Foto> images) {
+    if (images.isEmpty)
+      return [
+        Image.asset(
+          "assets/img/image_not_found.png",
+          fit: BoxFit.fill,
+        )
+      ];
     return images
         .map(
           (item) => Container(
@@ -67,11 +75,17 @@ class _ImageSliderState extends State<ImageSlider> {
               borderRadius: BorderRadius.all(Radius.circular(5.0)),
               child: Stack(
                 children: [
-                  Image.network(
-                    item,
+                  FadeInImage.assetNetwork(
                     fit: BoxFit.fill,
+                    placeholder: "assets/img/loading.gif",
+                    image: item.enlace,
                     width: 100.w,
                   ),
+                  // Image.network(
+                  //   item.enlace,
+                  //   fit: BoxFit.fill,
+                  //   width: 100.w,
+                  // ),
                   Positioned(
                     bottom: 0.0,
                     left: 0.0,
