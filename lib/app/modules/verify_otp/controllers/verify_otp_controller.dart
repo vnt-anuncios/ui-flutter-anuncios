@@ -120,7 +120,7 @@ class VerifyOtpController extends GetxController with PhoneAuthenticationMixin {
       if (newUser != null) {
         await _authUserService.clearUser();
         await _authUserService.setUser(newUser);
-        Get.offNamed(Routes.HOME);
+        Get.offAllNamed(Routes.HOME);
       }
     }
   }

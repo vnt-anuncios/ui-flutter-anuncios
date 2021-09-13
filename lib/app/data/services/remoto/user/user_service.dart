@@ -7,4 +7,9 @@ class UserService {
   Future<User?> saveTelefono(int id, String numero, String token) {
     return _userProvider.saveTelefono(id, numero, token);
   }
+
+  Future<User?> updateUser(String name, String? apellido, String? date,
+      String? ubicacion, String token) {
+    return _userProvider.updateUser(name, apellido, date, ubicacion, token);
+  }
 }

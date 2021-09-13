@@ -1,15 +1,15 @@
 import 'package:anuncios_ui/app/global/logout/logout_button.dart';
-import 'package:anuncios_ui/app/modules/login/controllers/login_controller.dart';
 import 'package:anuncios_ui/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
-import 'logout/logout_controller.dart';
+import 'main_drawer/main_drawer_controller.dart';
 
 class MainDrawer extends StatelessWidget {
-  const MainDrawer({Key? key}) : super(key: key);
+  final controller = Get.put(MainDrawerController());
+  MainDrawer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,16 +24,28 @@ class MainDrawer extends StatelessWidget {
             padding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 1.5.w),
             child: ListView(
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: UserAccountsDrawerHeader(
-                    accountName: Text("oswaldo"),
-                    accountEmail: Text("oswaldo.orellana.v@gmail.com"),
-                    currentAccountPicture: CircleAvatar(
-                      backgroundImage: NetworkImage(
-                          "https://randomuser.me/api/portraits/men/46.jpg"),
-                    ),
-                  ),
+                GetBuilder<MainDrawerController>(
+                  init: MainDrawerController(),
+                  initState: (_) {},
+                  id: "drawerheader",
+                  builder: (_) {
+                    return ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: UserAccountsDrawerHeader(
+                        accountName: Text(controller.user != null
+                            ? controller.user!.name
+                            : "ingrese un nombre"),
+                        accountEmail: Text(controller.user != null
+                            ? controller.user!.email
+                            : "ingrese un correo electronico"),
+                        currentAccountPicture: CircleAvatar(
+                          backgroundImage: NetworkImage(controller.user != null
+                              ? controller.user!.foto
+                              : "https://randomuser.me/api/portraits/men/46.jpg"),
+                        ),
+                      ),
+                    );
+                  },
                 ),
                 ListTile(
                   leading: Icon(FontAwesomeIcons.user),
