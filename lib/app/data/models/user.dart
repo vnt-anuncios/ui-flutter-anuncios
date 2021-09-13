@@ -7,6 +7,7 @@ class User {
   final String? apellido;
   final String? telefono;
   final String? ubicacion;
+  final DateTime? fecha_nacimiento;
   final String foto;
   final bool estado;
   User({
@@ -16,6 +17,7 @@ class User {
     this.apellido,
     this.telefono,
     this.ubicacion,
+    this.fecha_nacimiento,
     required this.foto,
     required this.estado,
   });
@@ -27,6 +29,7 @@ class User {
     String? apellido,
     String? telefono,
     String? ubicacion,
+    DateTime? fecha_nacimiento,
     String? foto,
     bool? estado,
   }) {
@@ -37,6 +40,7 @@ class User {
       apellido: apellido ?? this.apellido,
       telefono: telefono ?? this.telefono,
       ubicacion: ubicacion ?? this.ubicacion,
+      fecha_nacimiento: fecha_nacimiento ?? this.fecha_nacimiento,
       foto: foto ?? this.foto,
       estado: estado ?? this.estado,
     );
@@ -50,6 +54,7 @@ class User {
       'apellido': apellido,
       'telefono': telefono,
       'ubicacion': ubicacion,
+      'fecha_nacimiento': fecha_nacimiento?.toString(),
       'foto': foto,
       'estado': estado,
     };
@@ -63,8 +68,11 @@ class User {
       apellido: map['apellido'],
       telefono: map['telefono'],
       ubicacion: map['ubicacion'],
+      fecha_nacimiento: map['fecha_nacimiento'] == null
+          ? null
+          : DateTime.parse(map['fecha_nacimiento']),
       foto: map['foto'],
-      estado: map['estado'] == 0 ?false:true,
+      estado: map['estado'],
     );
   }
 
@@ -74,7 +82,7 @@ class User {
 
   @override
   String toString() {
-    return 'User(id: $id, name: $name, email: $email, apellido: $apellido, telefono: $telefono, ubicacion: $ubicacion, foto: $foto, estado: $estado)';
+    return 'User(id: $id, name: $name, email: $email, apellido: $apellido, telefono: $telefono, ubicacion: $ubicacion, fecha_nacimiento: $fecha_nacimiento, foto: $foto, estado: $estado)';
   }
 
   @override
@@ -88,6 +96,7 @@ class User {
         other.apellido == apellido &&
         other.telefono == telefono &&
         other.ubicacion == ubicacion &&
+        other.fecha_nacimiento == fecha_nacimiento &&
         other.foto == foto &&
         other.estado == estado;
   }
@@ -100,6 +109,7 @@ class User {
         apellido.hashCode ^
         telefono.hashCode ^
         ubicacion.hashCode ^
+        fecha_nacimiento.hashCode ^
         foto.hashCode ^
         estado.hashCode;
   }
