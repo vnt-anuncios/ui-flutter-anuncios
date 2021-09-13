@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "700402085236",
+    "project_id": "anuncios-322521",
+    "storage_bucket": "anuncios-322521.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:700402085236:android:ed0295a0aea786c8595021",
+        "android_client_info": {
+          "package_name": "com.anuncios.anuncios_ui"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "700402085236-csvvtl5sabg8n3vqku9ttoutvn6h7qc7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.anuncios.anuncios_ui",
+            "certificate_hash": "25e2c8121abd35639d84fb99dfaca2c036adb59c"
+          }
+        },
+        {
+          "client_id": "700402085236-dg2am9jmfljt0mm5f729f55uncddn2cs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBceFAR4-3fQzpL7ZlLO9cx2HaTriEt6I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "700402085236-dg2am9jmfljt0mm5f729f55uncddn2cs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

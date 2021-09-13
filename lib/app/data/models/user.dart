@@ -4,18 +4,20 @@ class User {
   final int id;
   final String name;
   final String email;
-  final String apellido;
-  final String telefono;
-  final String ubicacion;
+  final String? apellido;
+  final String? telefono;
+  final String? ubicacion;
   final String foto;
+  final bool estado;
   User({
     required this.id,
     required this.name,
     required this.email,
-    required this.apellido,
-    required this.telefono,
-    required this.ubicacion,
+    this.apellido,
+    this.telefono,
+    this.ubicacion,
     required this.foto,
+    required this.estado,
   });
 
   User copyWith({
@@ -26,6 +28,7 @@ class User {
     String? telefono,
     String? ubicacion,
     String? foto,
+    bool? estado,
   }) {
     return User(
       id: id ?? this.id,
@@ -35,6 +38,7 @@ class User {
       telefono: telefono ?? this.telefono,
       ubicacion: ubicacion ?? this.ubicacion,
       foto: foto ?? this.foto,
+      estado: estado ?? this.estado,
     );
   }
 
@@ -47,6 +51,7 @@ class User {
       'telefono': telefono,
       'ubicacion': ubicacion,
       'foto': foto,
+      'estado': estado,
     };
   }
 
@@ -59,6 +64,7 @@ class User {
       telefono: map['telefono'],
       ubicacion: map['ubicacion'],
       foto: map['foto'],
+      estado: map['estado'] == 0 ?false:true,
     );
   }
 
@@ -68,7 +74,7 @@ class User {
 
   @override
   String toString() {
-    return 'User(id: $id, name: $name, email: $email, apellido: $apellido, telefono: $telefono, ubicacion: $ubicacion, foto: $foto)';
+    return 'User(id: $id, name: $name, email: $email, apellido: $apellido, telefono: $telefono, ubicacion: $ubicacion, foto: $foto, estado: $estado)';
   }
 
   @override
@@ -82,7 +88,8 @@ class User {
         other.apellido == apellido &&
         other.telefono == telefono &&
         other.ubicacion == ubicacion &&
-        other.foto == foto;
+        other.foto == foto &&
+        other.estado == estado;
   }
 
   @override
@@ -93,6 +100,7 @@ class User {
         apellido.hashCode ^
         telefono.hashCode ^
         ubicacion.hashCode ^
-        foto.hashCode;
+        foto.hashCode ^
+        estado.hashCode;
   }
 }

@@ -1,8 +1,12 @@
+import 'package:anuncios_ui/app/global/logout/logout_button.dart';
+import 'package:anuncios_ui/app/modules/login/controllers/login_controller.dart';
 import 'package:anuncios_ui/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
+
+import 'logout/logout_controller.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({Key? key}) : super(key: key);
@@ -67,20 +71,7 @@ class MainDrawer extends StatelessWidget {
                     print("click en busquedas");
                   },
                 ),
-                ListTile(
-                  leading: Icon(FontAwesomeIcons.questionCircle),
-                  title: Text("Ayuda"),
-                  onTap: () {
-                    print("click ayuda");
-                  },
-                ),
-                ListTile(
-                  leading: Icon(FontAwesomeIcons.signOutAlt),
-                  title: Text("Cerrar sesión"),
-                  onTap: () {
-                    Get.toNamed(Routes.LOGIN);
-                  },
-                ),
+                LogoutView(),
               ],
             ),
           ),
