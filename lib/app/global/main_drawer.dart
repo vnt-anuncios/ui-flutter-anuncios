@@ -1,3 +1,4 @@
+import 'package:anuncios_ui/app/data/services/local/local_auth_service.dart';
 import 'package:anuncios_ui/app/global/logout/logout_button.dart';
 import 'package:anuncios_ui/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -79,8 +80,8 @@ class MainDrawer extends StatelessWidget {
                 ListTile(
                   leading: Icon(FontAwesomeIcons.search),
                   title: Text("Mis búsquedas"),
-                  onTap: () {
-                    print("click en busquedas");
+                  onTap: () async {
+                    print(await Get.find<LocalAuthService>().getSession());
                   },
                 ),
                 LogoutView(),

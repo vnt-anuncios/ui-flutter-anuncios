@@ -1,16 +1,18 @@
 import 'package:anuncios_ui/app/data/models/anuncio_detail.dart';
 import 'package:anuncios_ui/app/data/services/anuncio_destacados_service.dart';
-import 'package:anuncios_ui/app/data/services/anuncio_detail_service.dart';
+import 'package:anuncios_ui/app/data/services/local/local_auth_service.dart';
+import 'package:anuncios_ui/app/data/services/remoto/anuncios/anuncios_details_service.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  final AnuncioDetailService _anunciosDetailService;
+  final AnunciosDetailsService _anunciosDetailService =
+      Get.find<AnunciosDetailsService>();
   final AnuncioDestacadoService _anunciosDestacadoService;
 
   List<AnuncioDetails> listAnuncioDetails = [];
   List<AnuncioDetails> listAnuncioDestacados = [];
 
-  HomeController(this._anunciosDetailService, this._anunciosDestacadoService);
+  HomeController(this._anunciosDestacadoService);
 
   RxBool loading = false.obs;
   RxBool loadingDestacados = false.obs;
@@ -25,9 +27,10 @@ class HomeController extends GetxController {
     getAnunciosDestacados();
   }
 
-  getAnuncios() {
+  getAnuncios() async {
     loading.value = true;
-    this._anunciosDetailService.getAnuncioDetail().then((data) {
+    String? token = await Get.find<LocalAuthService>().getSession();
+    this._anunciosDetailService.getAnunciosDetails(token!).then((data) {
       listAnuncioDetails = data;
       loading.value = false;
     });
