@@ -5,6 +5,7 @@ import 'package:anuncios_ui/app/data/services/anuncio_destacados_service.dart';
 import 'package:anuncios_ui/app/data/services/categoria_anuncio_service.dart';
 import 'package:anuncios_ui/app/global/logout/logout_controller.dart';
 import 'package:anuncios_ui/app/modules/anuncios_search/controllers/anuncios_search_controller.dart';
+import 'package:anuncios_ui/app/modules/favorite_page/controllers/favorite_page_controller.dart';
 import 'package:anuncios_ui/app/modules/home/controllers/home_controller.dart';
 import 'package:get/get.dart';
 
@@ -26,6 +27,9 @@ class HomeBinding extends Bindings {
         ),
       ),
       fenix: false,
+    );
+    Get.put<FavoritePageController>(
+      FavoritePageController(),
     );
     Get.lazyPut<LogoutController>(() => LogoutController());
   }

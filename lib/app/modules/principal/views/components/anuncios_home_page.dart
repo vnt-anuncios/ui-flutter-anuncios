@@ -1,5 +1,6 @@
 import 'package:anuncios_ui/app/data/models/anuncio_detail.dart';
 import 'package:anuncios_ui/app/global/card_anuncio.dart';
+import 'package:anuncios_ui/app/global/favorito_bottom.dart';
 import 'package:anuncios_ui/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,6 +22,11 @@ class AnunciosHomePage extends StatelessWidget {
           onPress: () =>
               Get.toNamed(Routes.DETAILS, arguments: listAnuncio[index]),
           anuncioDetails: listAnuncio[index],
+          favorito: FavoritoButtom(
+            icon: Icons.home,
+            color: Colors.red,
+            onPress: () {},
+          ),
         );
       },
       shrinkWrap: true,
