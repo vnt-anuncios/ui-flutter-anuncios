@@ -121,13 +121,15 @@ class DetalleCardItem extends StatelessWidget {
                   children: [
                     TextButton.icon(
                       onPressed: () async {
-                        var whatsapp =
-                            urlWhatssap(numero: anuncios.user.telefono);
-                        if (await canLaunch(whatsapp)) {
-                          await launch(whatsapp);
-                        } else {
-                          throw 'could nnot launch $whatsapp';
-                        }
+                        try {
+                          var whatsapp =
+                              urlWhatssap(numero: anuncios.user.telefono!);
+                          if (await canLaunch(whatsapp)) {
+                            await launch(whatsapp);
+                          } else {
+                            throw 'could nnot launch $whatsapp';
+                          }
+                        } catch (e) {}
                       },
                       icon: Icon(
                         FontAwesomeIcons.whatsapp,
@@ -137,7 +139,7 @@ class DetalleCardItem extends StatelessWidget {
                     ),
                     TextButton.icon(
                       onPressed: () async {
-                        String numero = anuncios.user.telefono;
+                        String numero = anuncios.user.telefono!;
                         var telefono = llamar(numero: numero);
                         if (await canLaunch(telefono)) {
                           await launch(telefono);

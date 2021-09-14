@@ -169,7 +169,7 @@ class _CardAnuncioState extends State<CardAnuncio>
                                             onPressed: () async {
                                               var whatsapp = urlWhatssap(
                                                   numero: widget.anuncioDetails
-                                                      .user.telefono);
+                                                      .user.telefono!);
                                               if (await canLaunch(whatsapp)) {
                                                 await launch(whatsapp);
                                               } else {
@@ -183,7 +183,9 @@ class _CardAnuncioState extends State<CardAnuncio>
                                           TextButton.icon(
                                             onPressed: () async {
                                               String numero = widget
-                                                  .anuncioDetails.user.telefono;
+                                                  .anuncioDetails
+                                                  .user
+                                                  .telefono!;
 
                                               var telefono =
                                                   llamar(numero: numero);

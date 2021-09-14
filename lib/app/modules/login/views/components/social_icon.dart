@@ -3,7 +3,7 @@ import 'package:sizer/sizer.dart';
 
 class SocialIcon extends StatelessWidget {
   final IconData iconSrc;
-  final Function press;
+  final VoidCallback press;
   final Color color;
   const SocialIcon(
       {Key? key,
@@ -15,9 +15,7 @@ class SocialIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        press;
-      },
+      onTap: press,
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 15),
         padding: EdgeInsets.all(10),

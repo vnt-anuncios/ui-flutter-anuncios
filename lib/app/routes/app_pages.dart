@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import 'package:anuncios_ui/app/modules/SplashScreen/bindings/splash_screen_binding.dart';
+import 'package:anuncios_ui/app/modules/SplashScreen/views/splash_screen_view.dart';
 import 'package:anuncios_ui/app/modules/anuncios_search/bindings/anuncios_search_binding.dart';
 import 'package:anuncios_ui/app/modules/anuncios_search/views/anuncios_search_view.dart';
 import 'package:anuncios_ui/app/modules/categoria/bindings/categoria_binding.dart';
@@ -18,13 +20,15 @@ import 'package:anuncios_ui/app/modules/profile/bindings/profile_binding.dart';
 import 'package:anuncios_ui/app/modules/profile/views/profile_view.dart';
 import 'package:anuncios_ui/app/modules/recarga/bindings/recarga_binding.dart';
 import 'package:anuncios_ui/app/modules/recarga/views/recarga_view.dart';
+import 'package:anuncios_ui/app/modules/verify_otp/bindings/verify_otp_binding.dart';
+import 'package:anuncios_ui/app/modules/verify_otp/views/verify_otp_view.dart';
 
 part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.HOME;
+  static const INITIAL = Routes.SPLASH_SCREEN;
 
   static final routes = [
     GetPage(
@@ -71,6 +75,16 @@ class AppPages {
       name: _Paths.RECARGA,
       page: () => RecargaView(),
       binding: RecargaBinding(),
+    ),
+    GetPage(
+      name: _Paths.SPLASH_SCREEN,
+      page: () => SplashScreenView(),
+      binding: SplashScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.VERIFY_OTP,
+      page: () => VerifyOtpView(),
+      binding: VerifyOtpBinding(),
     ),
   ];
 }

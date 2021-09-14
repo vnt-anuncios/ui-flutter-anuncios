@@ -13,6 +13,8 @@ abstract class Routes {
   static const DETAILS = _Paths.DETAILS;
   static const PROFILE = _Paths.PROFILE;
   static const RECARGA = _Paths.RECARGA;
+  static const SPLASH_SCREEN = _Paths.SPLASH_SCREEN;
+  static const VERIFY_OTP = _Paths.VERIFY_OTP;
 }
 
 abstract class _Paths {
@@ -25,4 +27,6 @@ abstract class _Paths {
   static const DETAILS = '/details';
   static const PROFILE = '/profile';
   static const RECARGA = '/recarga';
+  static const SPLASH_SCREEN = '/splash-screen';
+  static const VERIFY_OTP = '/verify-otp';
 }

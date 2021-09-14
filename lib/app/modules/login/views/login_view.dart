@@ -18,70 +18,90 @@ class LoginView extends GetView<LoginController> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.only(top: 10.h),
-            height: 90.h,
-            width: 100.w,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "INICIAR SESIÓN",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 2.h),
-                Container(
-                  child: Center(
-                    child: SvgPicture.asset(
-                      "assets/img/login.svg",
-                      width: 80.w,
+        child: Stack(
+          children: [
+            SingleChildScrollView(
+              child: Container(
+                padding: EdgeInsets.only(top: 10.h),
+                height: 90.h,
+                width: 100.w,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "INICIAR SESIÓN",
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                  ),
-                ),
-                SizedBox(height: 2.h),
-                RoundedInputField(
-                  hintText: "Email",
-                  onChanged: (value) {},
-                ),
-                RoundedPasswordField(
-                  hintText: "Ingrese su Contraseña",
-                  onChanged: (value) {
-                    print(value);
-                  },
-                ),
-                RoundedButton(
-                  text: "Iniciar sesión",
-                  press: () {},
-                  color: Color(0xff15852F),
-                ),
-                SizedBox(height: 1.h),
-                Expanded(child: OrDivider()),
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SocialIcon(
-                        iconSrc: FontAwesomeIcons.facebook,
-                        press: () {},
-                        color: Colors.blue,
+                    SizedBox(height: 2.h),
+                    Container(
+                      child: Center(
+                        child: SvgPicture.asset(
+                          "assets/img/login.svg",
+                          width: 80.w,
+                        ),
                       ),
-                      SocialIcon(
-                        iconSrc: FontAwesomeIcons.twitter,
-                        press: () {},
-                        color: Colors.lightBlueAccent.shade400,
+                    ),
+                    SizedBox(height: 2.h),
+                    RoundedInputField(
+                      hintText: "Email",
+                      onChanged: (value) {},
+                    ),
+                    RoundedPasswordField(
+                      hintText: "Ingrese su Contraseña",
+                      onChanged: (value) {
+                        print(value);
+                      },
+                    ),
+                    RoundedButton(
+                      text: "Iniciar sesión",
+                      press: () {},
+                      color: Color(0xff15852F),
+                    ),
+                    SizedBox(height: 1.h),
+                    Expanded(child: OrDivider()),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SocialIcon(
+                            iconSrc: FontAwesomeIcons.facebook,
+                            press: () {},
+                            color: Colors.blue,
+                          ),
+                          SocialIcon(
+                            iconSrc: FontAwesomeIcons.twitter,
+                            press: () {},
+                            color: Colors.lightBlueAccent.shade400,
+                          ),
+                          SocialIcon(
+                            iconSrc: FontAwesomeIcons.google,
+                            press: () {
+                              print("hola mundo");
+                              controller.googleSignIn();
+                            },
+                            color: Colors.red,
+                          ),
+                        ],
                       ),
-                      SocialIcon(
-                        iconSrc: FontAwesomeIcons.google,
-                        press: () {},
-                        color: Colors.red,
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
-          ),
+            Obx(() => (controller.isLoading)
+                ? Container(
+                    height: 100.h,
+                    width: 100.w,
+                    color: Colors.black.withOpacity(0.5),
+                    child: Center(
+                      child: CircularProgressIndicator(
+                        valueColor:
+                            AlwaysStoppedAnimation<Color>(Colors.greenAccent),
+                      ),
+                    ),
+                  )
+                : Container()),
+          ],
         ),
       ),
     );
