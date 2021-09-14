@@ -1,5 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.anuncios.anuncios_ui">
+    <permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
+    <queries>
+        <package android:name="com.whatsapp"/>
+        <intent>
+            <action android:name="android.intent.action.DIAL" />
+            <data android:scheme="tel" />
+        </intent>
+    </queries>
    <application
         android:label="anuncios_ui"
         android:icon="@mipmap/ic_launcher">

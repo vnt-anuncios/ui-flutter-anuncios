@@ -1,5 +1,7 @@
+import 'package:anuncios_ui/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class MainDrawer extends StatelessWidget {
@@ -33,7 +35,7 @@ class MainDrawer extends StatelessWidget {
                   leading: Icon(FontAwesomeIcons.user),
                   title: Text("Mi Cuenta"),
                   onTap: () {
-                    print("click mi cuenta");
+                    Get.toNamed(Routes.PROFILE);
                   },
                 ),
                 ListTile(
@@ -48,6 +50,14 @@ class MainDrawer extends StatelessWidget {
                   title: Text("Mis Favoritos"),
                   onTap: () {
                     print("click mis favoritos");
+                    Get.toNamed(Routes.FAVORITE_PAGE);
+                  },
+                ),
+                ListTile(
+                  leading: Icon(FontAwesomeIcons.moneyBillAlt),
+                  title: Text("Mis Creditos"),
+                  onTap: () {
+                    Get.toNamed(Routes.RECARGA);
                   },
                 ),
                 ListTile(
@@ -68,7 +78,7 @@ class MainDrawer extends StatelessWidget {
                   leading: Icon(FontAwesomeIcons.signOutAlt),
                   title: Text("Cerrar sesión"),
                   onTap: () {
-                    print("click en cerrar sesion");
+                    Get.toNamed(Routes.LOGIN);
                   },
                 ),
               ],

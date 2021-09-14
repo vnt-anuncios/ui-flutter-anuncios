@@ -2,25 +2,27 @@ name: anuncios_ui
 version: 1.0.0+1
 publish_to: none
 description: A new Flutter project.
-environment: 
-  sdk: '>=2.12.0 <3.0.0'
+environment:
+  sdk: ">=2.12.0 <3.0.0"
 
-dependencies: 
+dependencies:
   cupertino_icons: ^1.0.2
   get: 4.1.4
-  flutter: 
+  flutter:
     sdk: flutter
   sizer: ^2.0.13
   font_awesome_flutter: ^9.1.0
   flutter_svg: ^0.22.0
+  carousel_slider: ^4.0.0
+  url_launcher: ^6.0.9
+  http: ^0.13.3
 
-dev_dependencies: 
-  flutter_test: 
+dev_dependencies:
+  flutter_test:
     sdk: flutter
 
-flutter: 
+flutter:
   uses-material-design: true
   assets:
     - assets/img/
     - assets/categoria/
-

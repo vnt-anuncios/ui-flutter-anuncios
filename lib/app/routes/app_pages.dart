@@ -4,12 +4,20 @@ import 'package:anuncios_ui/app/modules/anuncios_search/bindings/anuncios_search
 import 'package:anuncios_ui/app/modules/anuncios_search/views/anuncios_search_view.dart';
 import 'package:anuncios_ui/app/modules/categoria/bindings/categoria_binding.dart';
 import 'package:anuncios_ui/app/modules/categoria/views/categoria_view.dart';
+import 'package:anuncios_ui/app/modules/details/bindings/details_binding.dart';
+import 'package:anuncios_ui/app/modules/details/views/details_view.dart';
+import 'package:anuncios_ui/app/modules/favorite_page/bindings/favorite_page_binding.dart';
+import 'package:anuncios_ui/app/modules/favorite_page/views/favorite_page_view.dart';
 import 'package:anuncios_ui/app/modules/home/bindings/home_binding.dart';
 import 'package:anuncios_ui/app/modules/home/views/home_view.dart';
 import 'package:anuncios_ui/app/modules/login/bindings/login_binding.dart';
 import 'package:anuncios_ui/app/modules/login/views/login_view.dart';
 import 'package:anuncios_ui/app/modules/principal/bindings/principal_binding.dart';
 import 'package:anuncios_ui/app/modules/principal/views/principal_view.dart';
+import 'package:anuncios_ui/app/modules/profile/bindings/profile_binding.dart';
+import 'package:anuncios_ui/app/modules/profile/views/profile_view.dart';
+import 'package:anuncios_ui/app/modules/recarga/bindings/recarga_binding.dart';
+import 'package:anuncios_ui/app/modules/recarga/views/recarga_view.dart';
 
 part 'app_routes.dart';
 
@@ -43,6 +51,26 @@ class AppPages {
       name: _Paths.CATEGORIA,
       page: () => CategoriaView(),
       binding: CategoriaBinding(),
+    ),
+    GetPage(
+      name: _Paths.FAVORITE_PAGE,
+      page: () => FavoritePageView(),
+      binding: FavoritePageBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAILS,
+      page: () => DetailsView(),
+      binding: DetailsBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE,
+      page: () => ProfileView(),
+      binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.RECARGA,
+      page: () => RecargaView(),
+      binding: RecargaBinding(),
     ),
   ];
 }
