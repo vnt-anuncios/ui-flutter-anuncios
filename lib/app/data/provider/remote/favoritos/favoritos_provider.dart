@@ -55,7 +55,7 @@ class FavoritosProvider {
         'Authorization': 'Bearer $token',
       };
       var response =
-          await http.get(Uri.parse(url + "$anuncio_id"), headers: header);
+          await http.post(Uri.parse(url + "$anuncio_id"), headers: header);
       if (response.statusCode == 201) {
         return true;
       } else {

@@ -1,3 +1,4 @@
+import 'package:anuncios_ui/app/global/loading/loading.dart';
 import 'package:anuncios_ui/app/global/nuevo_categoria.dart';
 import 'package:anuncios_ui/app/global/text_title.dart';
 import 'package:anuncios_ui/app/modules/home/controllers/home_controller.dart';
@@ -64,7 +65,11 @@ class PrincipalView extends StatelessWidget {
           Expanded(
             child: Obx(
               () => (controller.isLoading)
-                  ? loadingAnuncio()
+                  ? Container(
+                      child: Center(
+                        child: CircularProgressIndicatorGreen(),
+                      ),
+                    )
                   : AnunciosHomePage(
                       listAnuncio: controller.listAnuncioDetails),
             ),

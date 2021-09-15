@@ -2,12 +2,14 @@ import 'package:anuncios_ui/app/data/models/anuncio_detail.dart';
 import 'package:anuncios_ui/app/data/services/anuncio_destacados_service.dart';
 import 'package:anuncios_ui/app/data/services/local/local_auth_service.dart';
 import 'package:anuncios_ui/app/data/services/remoto/anuncios/anuncios_details_service.dart';
+import 'package:anuncios_ui/app/data/services/remoto/favoritos/favoritos_services.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
   final AnunciosDetailsService _anunciosDetailService =
       Get.find<AnunciosDetailsService>();
   final AnuncioDestacadoService _anunciosDestacadoService;
+  final FavoritosService _favoritosService = Get.find<FavoritosService>();
 
   List<AnuncioDetails> listAnuncioDetails = [];
   List<AnuncioDetails> listAnuncioDestacados = [];
@@ -47,6 +49,26 @@ class HomeController extends GetxController {
 
   change(int index) {
     indexRx.value = index;
+  }
+
+  addFavorito(int index, int anuncio_id) async {
+    try {
+      bool success = await _favoritosService.addFavoritos(anuncio_id);
+      if (success) {
+        listAnuncioDetails[index].isFavorito = true;
+        update([index]);
+      }
+    } catch (e) {}
+  }
+
+  deleteFavorito(index, int anuncio_id) async {
+    try {
+      bool success = await _favoritosService.deleteFavoritos(anuncio_id);
+      if (success) {
+        listAnuncioDetails[index].isFavorito = false;
+        update([index]);
+      }
+    } catch (e) {}
   }
 
   @override
