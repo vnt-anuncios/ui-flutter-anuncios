@@ -1,20 +1,14 @@
+import 'package:anuncios_ui/app/data/models/categoria.dart';
+import 'package:anuncios_ui/app/data/services/local/local_categoria_service.dart';
 import 'package:get/get.dart';
 
 class CategoriaController extends GetxController {
-  //TODO: Implement CategoriaController
-
-  final count = 0.obs;
+  final localCategoria = Get.find<LocalCategoriaService>();
+  List<Categoria> categoria = Get.find<LocalCategoriaService>().categoria;
+  Map<int, List<Categoria>> subCategoria =
+      Get.find<LocalCategoriaService>().subCategoria;
   @override
   void onInit() {
-    super.onInit();
+    print(subCategoria.toString());
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {}
-  void increment() => count.value++;
 }

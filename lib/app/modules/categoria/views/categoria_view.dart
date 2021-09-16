@@ -29,22 +29,19 @@ class CategoriaView extends GetView<CategoriaController> {
             Expanded(
               child: Container(
                 child: GridView.builder(
-                  itemCount: itemdecategoria.length,
+                  itemCount: controller.categoria.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3),
                   padding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 2.w),
                   itemBuilder: (context, index) => Center(
                     child: ItemCard(
-                      items: itemdecategoria[index],
+                      items: controller.categoria[index],
                       onPress: () {
-                        print(
-                          itemdecategoria[index].title,
-                        );
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) => SubCategoriaView(
-                              categoria: index,
-                              name: itemdecategoria[index].title,
+                              categoria: controller.categoria[index].id,
+                              name: controller.categoria[index].nombre,
                             ),
                           ),
                         );

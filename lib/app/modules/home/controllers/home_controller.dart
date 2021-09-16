@@ -48,6 +48,7 @@ class HomeController extends GetxController {
   }
 
   change(int index) {
+    update(["menu"]);
     indexRx.value = index;
   }
 

@@ -1,3 +1,4 @@
+import 'package:anuncios_ui/app/modules/home/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
@@ -30,13 +31,9 @@ class SettingHomePage extends StatefulWidget {
 }
 
 class _SettingHomePageState extends State<SettingHomePage> {
-  int _selectedIndex = 0;
-
+  var controller = Get.find<HomeController>();
   _updateIndex(int index) {
     widget.onTabSelected(index);
-    setState(() {
-      _selectedIndex = index;
-    });
   }
 
   @override
@@ -84,7 +81,8 @@ class _SettingHomePageState extends State<SettingHomePage> {
     required int index,
     required ValueChanged<int> onPressed,
   }) {
-    Color color = _selectedIndex == index ? widget.selectedColor : widget.color;
+    Color color =
+        controller.indexRx.value == index ? widget.selectedColor : widget.color;
     return Expanded(
         child: SizedBox(
       height: widget.height,

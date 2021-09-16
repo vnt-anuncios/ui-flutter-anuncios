@@ -1,3 +1,4 @@
+import 'package:anuncios_ui/app/data/services/local/local_categoria_service.dart';
 import 'package:anuncios_ui/app/global/loading/loading.dart';
 import 'package:anuncios_ui/app/global/nuevo_categoria.dart';
 import 'package:anuncios_ui/app/global/text_title.dart';
@@ -10,8 +11,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/principal_controller.dart';
-
 class PrincipalView extends StatelessWidget {
   final controller = Get.find<HomeController>();
   @override
@@ -21,7 +20,7 @@ class PrincipalView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           MainCategoria(
-            items: item,
+            items: Get.find<LocalCategoriaService>().categoria,
           ),
           TextTitle(
             title: "Anuncios Destacados",
