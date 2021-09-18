@@ -1,4 +1,5 @@
 import 'package:anuncios_ui/app/data/models/categoria.dart';
+import 'package:anuncios_ui/app/modules/anuncios_search/controllers/anuncios_search_controller.dart';
 import 'package:anuncios_ui/app/modules/home/controllers/home_controller.dart';
 import 'package:anuncios_ui/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +37,10 @@ class MainCategoria extends StatelessWidget {
           return ItemCard(
             items: items[index],
             onPress: () {
+              Get.find<AnunciosSearchController>().selectCategoria.value =
+                  items[index].id;
+              Get.find<AnunciosSearchController>()
+                  .getAnuncioCategoria(items[index].id);
               Get.find<HomeController>().change(1);
             },
           );

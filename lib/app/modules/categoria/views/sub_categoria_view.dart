@@ -1,6 +1,8 @@
 import 'package:anuncios_ui/app/data/models/categoria.dart';
+import 'package:anuncios_ui/app/modules/anuncios_search/controllers/anuncios_search_controller.dart';
 import 'package:anuncios_ui/app/modules/categoria/controllers/categoria_controller.dart';
 import 'package:anuncios_ui/app/modules/categoria/views/componentes/search_field.dart';
+import 'package:anuncios_ui/app/modules/home/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
@@ -38,7 +40,16 @@ class SubCategoriaView extends GetView<CategoriaController> {
                       itemBuilder: (context, index) {
                         return ItemSubCategoria(
                           title: subCategoria[index].nombre,
-                          onPress: (value) => print("select $value"),
+                          onPress: (value) {
+                            Get.find<AnunciosSearchController>()
+                                .selectCategoria
+                                .value = subCategoria[index].id;
+                            Get.find<AnunciosSearchController>()
+                                .getAnuncioCategoria(subCategoria[index].id);
+                            Get.back();
+                            Get.back();
+                            Get.find<HomeController>().change(1);
+                          },
                         );
                       },
                     ),

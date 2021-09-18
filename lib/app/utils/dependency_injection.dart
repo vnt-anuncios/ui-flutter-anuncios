@@ -2,6 +2,7 @@ import 'package:anuncios_ui/app/data/provider/local/local_auth.dart';
 import 'package:anuncios_ui/app/data/provider/local/local_categoria.dart';
 import 'package:anuncios_ui/app/data/provider/local/local_user_auth.dart';
 import 'package:anuncios_ui/app/data/provider/remote/anuncios/anuncios_details_provider.dart';
+import 'package:anuncios_ui/app/data/provider/remote/anuncios_categorias/anuncio_categoria_provider.dart';
 import 'package:anuncios_ui/app/data/provider/remote/auth_api_provider.dart';
 import 'package:anuncios_ui/app/data/provider/remote/categorias/categorias_provider.dart';
 import 'package:anuncios_ui/app/data/provider/remote/favoritos/favoritos_provider.dart';
@@ -14,6 +15,7 @@ import 'package:anuncios_ui/app/data/services/local/local_auth_service.dart';
 import 'package:anuncios_ui/app/data/services/local/local_categoria_service.dart';
 import 'package:anuncios_ui/app/data/services/local/local_user_auth_service.dart';
 import 'package:anuncios_ui/app/data/services/remoto/anuncios/anuncios_details_service.dart';
+import 'package:anuncios_ui/app/data/services/remoto/anuncios_categorias/anuncios_categorias_service.dart';
 import 'package:anuncios_ui/app/data/services/remoto/categorias/categorias_service.dart';
 import 'package:anuncios_ui/app/data/services/remoto/favoritos/favoritos_services.dart';
 import 'package:anuncios_ui/app/data/services/remoto/user/user_service.dart';
@@ -53,6 +55,8 @@ class DependencyInjection {
 
     Get.put<CategoriaProvider>(CategoriaProvider());
 
+    Get.put<AnunciosCategoriaProvider>(AnunciosCategoriaProvider());
+
     //service o repository
     Get.put<AuthApiService>(AuthApiService());
     Get.put<GoogleSignInService>(GoogleSignInService());
@@ -64,5 +68,7 @@ class DependencyInjection {
     Get.put<FavoritosService>(FavoritosService());
 
     Get.put<CategoriasService>(CategoriasService());
+
+    Get.put<AnunciosCategoriaService>(AnunciosCategoriaService());
   }
 }

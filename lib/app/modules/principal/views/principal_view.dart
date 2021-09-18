@@ -30,7 +30,11 @@ class PrincipalView extends StatelessWidget {
             height: 28.h,
             child: Obx(
               () => (controller.isLoadingDestacados)
-                  ? loadingAnuncio()
+                  ? Container(
+                      child: Center(
+                        child: CircularProgressIndicatorGreen(),
+                      ),
+                    )
                   : AnunciosDestacados(
                       listDestacados: controller.listAnuncioDestacados,
                     ),
