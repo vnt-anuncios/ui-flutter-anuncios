@@ -91,4 +91,36 @@ class AnunciosDetailsProvider {
       throw e;
     }
   }
+
+  Future<List<AnuncioDetails>> misAnuncios(String token) async {
+    try {
+      var header = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      };
+      String url = BaseUrl.BASE_URL_REMOTO + "misanuncios/";
+      var response = await http.get(Uri.parse(url), headers: header);
+      if (response.statusCode == 200) {
+        var data = json.decode(response.body)["data"] as List;
+        List<AnuncioDetails> listAnuncios = data.map<AnuncioDetails>((model) {
+          List<Foto> fotos =
+              model["fotos"].map<Foto>((e) => Foto.fromMap(e)).toList();
+          bool isFavorito = model["favoritos"].length > 0 ? true : false;
+          return AnuncioDetails(
+            Anuncio.fromMap(model),
+            fotos,
+            User.fromMap(model["user"]),
+            isFavorito,
+            Categoria.fromMap(model["categoria"]),
+            null,
+          );
+        }).toList();
+        return listAnuncios;
+      } else {
+        return [];
+      }
+    } catch (e) {
+      throw e;
+    }
+  }
 }

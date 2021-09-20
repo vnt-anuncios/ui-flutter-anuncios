@@ -59,6 +59,7 @@ class MainDrawer extends StatelessWidget {
                   leading: Icon(FontAwesomeIcons.listUl),
                   title: Text("Mis Anuncios"),
                   onTap: () {
+                    Get.toNamed(Routes.MIS_ANUNCIOS);
                     print("click mis anuncios");
                   },
                 ),

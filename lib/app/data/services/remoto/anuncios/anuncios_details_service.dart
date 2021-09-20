@@ -18,4 +18,9 @@ class AnunciosDetailsService {
     return _anunciosDetailsProvider.addAnuncio(
         photos, id_categoria, anuncio, token!);
   }
+
+  Future<List<AnuncioDetails>> misAnuncios() async {
+    String? token = await Get.find<LocalAuthService>().getSession();
+    return _anunciosDetailsProvider.misAnuncios(token!);
+  }
 }

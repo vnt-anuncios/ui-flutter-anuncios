@@ -16,6 +16,7 @@ abstract class Routes {
   static const SPLASH_SCREEN = _Paths.SPLASH_SCREEN;
   static const VERIFY_OTP = _Paths.VERIFY_OTP;
   static const PUBLISH = _Paths.PUBLISH;
+  static const MIS_ANUNCIOS = _Paths.MIS_ANUNCIOS;
 }
 
 abstract class _Paths {
@@ -31,4 +32,5 @@ abstract class _Paths {
   static const SPLASH_SCREEN = '/splash-screen';
   static const VERIFY_OTP = '/verify-otp';
   static const PUBLISH = '/publish';
+  static const MIS_ANUNCIOS = '/mis-anuncios';
 }

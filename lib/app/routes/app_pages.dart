@@ -14,6 +14,8 @@ import 'package:anuncios_ui/app/modules/home/bindings/home_binding.dart';
 import 'package:anuncios_ui/app/modules/home/views/home_view.dart';
 import 'package:anuncios_ui/app/modules/login/bindings/login_binding.dart';
 import 'package:anuncios_ui/app/modules/login/views/login_view.dart';
+import 'package:anuncios_ui/app/modules/misAnuncios/bindings/mis_anuncios_binding.dart';
+import 'package:anuncios_ui/app/modules/misAnuncios/views/mis_anuncios_view.dart';
 import 'package:anuncios_ui/app/modules/principal/bindings/principal_binding.dart';
 import 'package:anuncios_ui/app/modules/principal/views/principal_view.dart';
 import 'package:anuncios_ui/app/modules/profile/bindings/profile_binding.dart';
@@ -92,6 +94,11 @@ class AppPages {
       name: _Paths.PUBLISH,
       page: () => PublishView(),
       binding: PublishBinding(),
+    ),
+    GetPage(
+      name: _Paths.MIS_ANUNCIOS,
+      page: () => MisAnunciosView(),
+      binding: MisAnunciosBinding(),
     ),
   ];
 }
