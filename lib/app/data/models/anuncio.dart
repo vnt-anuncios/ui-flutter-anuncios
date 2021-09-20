@@ -11,7 +11,7 @@ class Anuncio {
   final String descripcion;
 
   Anuncio({
-    required this.id,
+    this.id = -1,
     required this.titulo,
     required this.precio,
     required this.fecha_publicacion,

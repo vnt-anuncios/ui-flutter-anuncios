@@ -18,6 +18,8 @@ import 'package:anuncios_ui/app/modules/principal/bindings/principal_binding.dar
 import 'package:anuncios_ui/app/modules/principal/views/principal_view.dart';
 import 'package:anuncios_ui/app/modules/profile/bindings/profile_binding.dart';
 import 'package:anuncios_ui/app/modules/profile/views/profile_view.dart';
+import 'package:anuncios_ui/app/modules/publish/bindings/publish_binding.dart';
+import 'package:anuncios_ui/app/modules/publish/views/publish_view.dart';
 import 'package:anuncios_ui/app/modules/recarga/bindings/recarga_binding.dart';
 import 'package:anuncios_ui/app/modules/recarga/views/recarga_view.dart';
 import 'package:anuncios_ui/app/modules/verify_otp/bindings/verify_otp_binding.dart';
@@ -85,6 +87,11 @@ class AppPages {
       name: _Paths.VERIFY_OTP,
       page: () => VerifyOtpView(),
       binding: VerifyOtpBinding(),
+    ),
+    GetPage(
+      name: _Paths.PUBLISH,
+      page: () => PublishView(),
+      binding: PublishBinding(),
     ),
   ];
 }

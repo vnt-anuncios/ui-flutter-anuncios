@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'dart:io';
+import 'dart:async';
 
 import 'package:anuncios_ui/app/data/models/anuncio.dart';
 import 'package:anuncios_ui/app/data/models/anuncio_detail.dart';
@@ -40,6 +42,51 @@ class AnunciosDetailsProvider {
       } else {
         return [];
       }
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  Future<bool> addAnuncio(
+    List<File> photos,
+    int id_categoria,
+    Anuncio anuncio,
+    String token,
+  ) async {
+    final String url = BaseUrl.BASE_URL_REMOTO + "agregarAnuncio";
+
+    var header = {
+      'Content-Type': 'multipart/form-data',
+      //'Content-Type': 'application/json',
+      'Authorization': 'Bearer $token'
+    };
+    try {
+      var request = http.MultipartRequest("POST", Uri.parse(url));
+      //agregando las imagenes
+      int i = 0;
+      List<http.MultipartFile> files = [];
+      for (var photo in photos) {
+        String fileName = photo.path.split("/").last;
+        var stream = http.ByteStream(photo.openRead())..cast();
+        var length = await photo.length();
+
+        var multiPartFileSign =
+            http.MultipartFile("fotos$i", stream, length, filename: fileName);
+        files.add(multiPartFileSign);
+        i += 1;
+      }
+      request.files.addAll(files);
+      request.headers.addAll(header);
+
+      request.fields['anuncio'] = anuncio.toJson();
+      request.fields['id_categoria'] = id_categoria.toString();
+
+      var response = await request.send();
+      var res = await http.Response.fromStream(response);
+      if (response.statusCode == 200) {
+        return true;
+      }
+      return false;
     } catch (e) {
       throw e;
     }

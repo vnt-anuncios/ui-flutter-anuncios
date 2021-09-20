@@ -72,7 +72,7 @@ class HomeView extends GetView<HomeController> {
           width: 12.w,
           child: FloatingActionButton(
             onPressed: () {
-              controller.getAnunciosDestacados();
+              Get.toNamed(Routes.PUBLISH);
             },
             backgroundColor: Colors.green,
             elevation: 2,
