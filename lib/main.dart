@@ -1,3 +1,4 @@
+import 'package:anuncios_ui/app/data/services/local/local_categoria_service.dart';
 import 'package:anuncios_ui/app/utils/dependency_injection.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +6,6 @@ import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
-
 import 'app/routes/app_pages.dart';
 import 'package:flutter/services.Dart';
 
@@ -13,6 +13,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   DependencyInjection.init();
+  await Get.find<LocalCategoriaService>().cargarCategoria();
   runApp(
     MyApp(),
   );

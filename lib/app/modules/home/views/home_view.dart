@@ -34,31 +34,36 @@ class HomeView extends GetView<HomeController> {
         body: Obx(
           () => listPage.elementAt(controller.indexRx.value),
         ),
-        bottomNavigationBar: SettingHomePage(
-          items: [
-            BottonAppBarItem(Icons.home_outlined, "Home", Routes.LOGIN),
-            BottonAppBarItem(Icons.search, "Buscar", Routes.LOGIN),
-            BottonAppBarItem(
-                Icons.favorite_border_outlined, "Favoritos", Routes.LOGIN),
-            BottonAppBarItem(Icons.person_outline, "Perfil", Routes.LOGIN),
-          ],
-          centerItemText: "Publicar",
-          backgroundColor: Colors.white,
-          color: Colors.grey.shade500,
-          selectedColor: Colors.green,
-          notchedShape: CircularNotchedRectangle(),
-          onTabSelected: (value) {
-            print(value);
-            if (value == 3) {
-              print(scaffoldKey.currentState?.isEndDrawerOpen);
-              if (scaffoldKey.currentState!.isEndDrawerOpen) {
-                scaffoldKey.currentState!.openEndDrawer();
-              } else {
-                scaffoldKey.currentState!.openEndDrawer();
-              }
-            } else {
-              controller.change(value);
-            }
+        bottomNavigationBar: GetBuilder<HomeController>(
+          id: "menu",
+          builder: (_) {
+            return SettingHomePage(
+              items: [
+                BottonAppBarItem(Icons.home_outlined, "Home", Routes.LOGIN),
+                BottonAppBarItem(Icons.search, "Buscar", Routes.LOGIN),
+                BottonAppBarItem(
+                    Icons.favorite_border_outlined, "Favoritos", Routes.LOGIN),
+                BottonAppBarItem(Icons.person_outline, "Perfil", Routes.LOGIN),
+              ],
+              centerItemText: "Publicar",
+              backgroundColor: Colors.white,
+              color: Colors.grey.shade500,
+              selectedColor: Colors.green,
+              notchedShape: CircularNotchedRectangle(),
+              onTabSelected: (value) {
+                print(value);
+                if (value == 3) {
+                  print(scaffoldKey.currentState?.isEndDrawerOpen);
+                  if (scaffoldKey.currentState!.isEndDrawerOpen) {
+                    scaffoldKey.currentState!.openEndDrawer();
+                  } else {
+                    scaffoldKey.currentState!.openEndDrawer();
+                  }
+                } else {
+                  controller.change(value);
+                }
+              },
+            );
           },
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -66,8 +71,12 @@ class HomeView extends GetView<HomeController> {
           height: 12.h,
           width: 12.w,
           child: FloatingActionButton(
-            onPressed: () {
-              controller.getAnunciosDestacados();
+            onPressed: () async {
+              int change = controller.indexRx.value;
+              await Get.toNamed(Routes.CATEGORIA);
+
+              Get.toNamed(Routes.PUBLISH);
+              controller.change(change);
             },
             backgroundColor: Colors.green,
             elevation: 2,

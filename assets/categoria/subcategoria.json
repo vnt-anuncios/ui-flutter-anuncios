@@ -1,0 +1,863 @@
+{ 
+    "data" :[
+        {
+            "id":11,
+            "subcategorias":[
+                {
+                    "id":18,
+                    "nombre":"Coches",
+                    "imagen":"",
+                    "categoria_id":1
+                },
+                {
+                    "id":19,
+                    "nombre":"Motos",
+                    "imagen":"",
+                    "categoria_id":1
+                },{
+                    "id":20,
+                    "nombre":"Furgonetas camper",
+                    "imagen":"",
+                    "categoria_id":1
+                },
+                {
+                    "id":21,
+                    "nombre":"Mercedes Clase A",
+                    "imagen":"",
+                    "categoria_id":1
+                },
+                {
+                    "id":22,
+                    "nombre":"Porsche Cayenne",
+                    "imagen":"",
+                    "categoria_id":1
+                },
+                {
+                    "id":23,
+                    "nombre":"Autocaravanas",
+                    "imagen":"",
+                    "categoria_id":1
+                },
+                {
+                    "id":24,
+                    "nombre":"Caravanas de segunda mano",
+                    "imagen":"",
+                    "categoria_id":1
+                },
+                {
+                    "id":25,
+                    "nombre":"Suzuki Vitara",
+                    "imagen":"",
+                    "categoria_id":1
+                },
+                {
+                    "id":26,
+                    "nombre":"Motos 125cc",
+                    "imagen":"",
+                    "categoria_id":1
+                },
+                {
+                    "id":27,
+                    "nombre":"Kawasaki Ninja",
+                    "imagen":"",
+                    "categoria_id":1
+                },
+                {
+                    "id":28,
+                    "nombre":"Otros",
+                    "imagen":"",
+                    "categoria_id":1
+                }
+                
+            ]
+        },
+        {
+            "id":1,
+            "subcategorias":[
+                {
+                    "id":29,
+                    "nombre":"Cuadros",
+                    "imagen":"",
+                    "categoria_id":1
+                },
+                {
+                    "id":30,
+                    "nombre":"Pinturas",
+                    "imagen":"",
+                    "categoria_id":1
+                }                
+            ]
+        },
+        {
+            "id":2,
+            "subcategorias":[
+                {
+                    "id":31,
+                    "nombre":"Leche y derivados",
+                    "imagen":"",
+                    "categoria_id":2
+                },
+                {
+                    "id":32,
+                    "nombre":"Carnes pescados y huevos",
+                    "imagen":"",
+                    "categoria_id":2
+                } ,
+                {
+                    "id":33,
+                    "nombre":"Legumbres, frutos secos y patatas. ",
+                    "imagen":"",
+                    "categoria_id":2
+                },
+                {
+                    "id":34,
+                    "nombre":"Hortalizas",
+                    "imagen":"",
+                    "categoria_id":2
+                }   ,
+                {
+                    "id":35,
+                    "nombre":"Frutas",
+                    "imagen":"",
+                    "categoria_id":2
+                },
+                {
+                    "id":36,
+                    "nombre":"Cereales",
+                    "imagen":"",
+                    "categoria_id":2
+                }   ,
+                {
+                    "id":37,
+                    "nombre":"Mantecas y Aceites",
+                    "imagen":"",
+                    "categoria_id":2
+                },
+                {
+                    "id":38,
+                    "nombre":"Carnes pescados y huevos",
+                    "imagen":"",
+                    "categoria_id":2
+                }   ,{
+                    "id":39,
+                    "nombre":"Alimentos procesados",
+                    "imagen":"",
+                    "categoria_id":2
+                },
+                {
+                    "id":40,
+                    "nombre":"Bebidas",
+                    "imagen":"",
+                    "categoria_id":2
+                }                
+            ]
+        },{
+            "id":3,
+            "subcategorias":[
+                {
+                    "id":41,
+                    "nombre":"BH California",
+                    "imagen":"",
+                    "categoria_id":3
+                },
+                {
+                    "id":42,
+                    "nombre":"Patinete eléctrico",
+                    "imagen":"",
+                    "categoria_id":3
+                } ,
+                {
+                    "id":43,
+                    "nombre":"Saco de boxeo",
+                    "imagen":"",
+                    "categoria_id":3
+                },
+                {
+                    "id":44,
+                    "nombre":"Garmin Vivoactive",
+                    "imagen":"",
+                    "categoria_id":3
+                }   ,
+                {
+                    "id":45,
+                    "nombre":"Orbea Alma",
+                    "imagen":"",
+                    "categoria_id":3
+                },
+                {
+                    "id":46,
+                    "nombre":"Mancuernas regulables",
+                    "imagen":"",
+                    "categoria_id":3
+                }   ,
+                {
+                    "id":47,
+                    "nombre":"Kayak rígido",
+                    "imagen":"",
+                    "categoria_id":3
+                },
+                {
+                    "id":48,
+                    "nombre":"Palas de Padel",
+                    "imagen":"",
+                    "categoria_id":3
+                }   ,{
+                    "id":49,
+                    "nombre":"Botas de fútbol",
+                    "imagen":"",
+                    "categoria_id":3
+                },
+                {
+                    "id":50,
+                    "nombre":"Banco de pesas",
+                    "imagen":"",
+                    "categoria_id":3
+                },
+                {
+                    "id":51,
+                    "nombre":"Balón",
+                    "imagen":"",
+                    "categoria_id":3
+                },
+                {
+                    "id":52,
+                    "nombre":"Mesas de Ping Pong",
+                    "imagen":"",
+                    "categoria_id":3
+                } ,
+                {
+                    "id":53,
+                    "nombre":"Tabla de surf",
+                    "imagen":"",
+                    "categoria_id":3
+                },
+                {
+                    "id":54,
+                    "nombre":"Patinete Oxelo",
+                    "imagen":"",
+                    "categoria_id":3
+                }   ,
+                {
+                    "id":55,
+                    "nombre":"Bicicletas",
+                    "imagen":"",
+                    "categoria_id":3
+                }
+            ]
+        },{
+            "id":4,
+            "subcategorias":[
+                {
+                    "id":56,
+                    "nombre":"Tele Trabajo",
+                    "imagen":"",
+                    "categoria_id":4
+                }   ,
+                {
+                    "id":57,
+                    "nombre":"Comerciales",
+                    "imagen":"",
+                    "categoria_id":4
+                },
+                {
+                    "id":58,
+                    "nombre":"Conductores",
+                    "imagen":"",
+                    "categoria_id":4
+                }   ,{
+                    "id":59,
+                    "nombre":"Administrativos",
+                    "imagen":"",
+                    "categoria_id":4
+                },
+                {
+                    "id":60,
+                    "nombre":"Recepcionistas",
+                    "imagen":"",
+                    "categoria_id":4
+                },
+                {
+                    "id":61,
+                    "nombre":"Informáticos",
+                    "imagen":"",
+                    "categoria_id":4
+                },
+                {
+                    "id":62,
+                    "nombre":"Construcción",
+                    "imagen":"",
+                    "categoria_id":4
+                } ,
+                {
+                    "id":63,
+                    "nombre":"Cajeros de supermercado",
+                    "imagen":"",
+                    "categoria_id":4
+                },
+                {
+                    "id":64,
+                    "nombre":"Trabajo en construcción",
+                    "imagen":"",
+                    "categoria_id":4
+                }   ,
+                {
+                    "id":65,
+                    "nombre":"Cocineros y Camareros",
+                    "imagen":"",
+                    "categoria_id":4
+                }  ,
+                {
+                    "id":66,
+                    "nombre":"Cocineros y Camareros",
+                    "imagen":"",
+                    "categoria_id":4
+                }
+            ]
+        },{
+            "id":5,
+            "subcategorias":[
+                {
+                    "id":67,
+                    "nombre":"Libros de cocina",
+                    "imagen":"",
+                    "categoria_id":5
+                },
+                {
+                    "id":68,
+                    "nombre":"Cuentos Disney",
+                    "imagen":"",
+                    "categoria_id":5
+                }   ,{
+                    "id":69,
+                    "nombre":"Cursos",
+                    "imagen":"",
+                    "categoria_id":5
+                },
+                {
+                    "id":70,
+                    "nombre":"Cursos de fotografía",
+                    "imagen":"",
+                    "categoria_id":5
+                },
+                {
+                    "id":71,
+                    "nombre":"Autoescuelas",
+                    "imagen":"",
+                    "categoria_id":5
+                },
+                {
+                    "id":62,
+                    "nombre":"Escuelas de baile",
+                    "imagen":"",
+                    "categoria_id":5
+                } ,
+                {
+                    "id":63,
+                    "nombre":"Libros Harry Potter",
+                    "imagen":"",
+                    "categoria_id":5
+                },
+                {
+                    "id":64,
+                    "nombre":"Novelas",
+                    "imagen":"",
+                    "categoria_id":5
+                }   ,
+                {
+                    "id":65,
+                    "nombre":"Libros",
+                    "imagen":"",
+                    "categoria_id":5
+                },
+                {
+                    "id":66,
+                    "nombre":"Comic",
+                    "imagen":"",
+                    "categoria_id":5
+                }
+            ]
+        },{
+            "id":6,
+            "subcategorias":[
+                {
+                    "id":77,
+                    "nombre":"iPad ",
+                    "imagen":"",
+                    "categoria_id":6
+                },
+                {
+                    "id":78,
+                    "nombre":"Tablets",
+                    "imagen":"",
+                    "categoria_id":6
+                }   ,{
+                    "id":79,
+                    "nombre":"HP Elitebook",
+                    "imagen":"",
+                    "categoria_id":6
+                },
+                {
+                    "id":80,
+                    "nombre":"Macbook Pro",
+                    "imagen":"",
+                    "categoria_id":6
+                },
+                {
+                    "id":81,
+                    "nombre":"HP pavilion DV6",
+                    "imagen":"",
+                    "categoria_id":6
+                },
+                {
+                    "id":82,
+                    "nombre":"Acer Aspire One",
+                    "imagen":"",
+                    "categoria_id":6
+                } ,
+                {
+                    "id":83,
+                    "nombre":"Mini portátiles",
+                    "imagen":"",
+                    "categoria_id":6
+                },
+                {
+                    "id":84,
+                    "nombre":"Impresoras ",
+                    "imagen":"",
+                    "categoria_id":6
+                }   ,
+                {
+                    "id":85,
+                    "nombre":"Mouse",
+                    "imagen":"",
+                    "categoria_id":6
+                },
+                {
+                    "id":86,
+                    "nombre":"Portátiles",
+                    "imagen":"",
+                    "categoria_id":6
+                },
+                {
+                    "id":87,
+                    "nombre":"Alienware ",
+                    "imagen":"",
+                    "categoria_id":6
+                },
+                {
+                    "id":88,
+                    "nombre":"Ordenadores",
+                    "imagen":"",
+                    "categoria_id":6
+                }
+            ]
+        },{
+            "id":7,
+            "subcategorias":[
+                {
+                    "id":89,
+                    "nombre":"Casas en alquiler",
+                    "imagen":"",
+                    "categoria_id":7
+                },
+                {
+                    "id":90,
+                    "nombre":"Pisos en alquiler",
+                    "imagen":"",
+                    "categoria_id":7
+                },
+                {
+                    "id":91,
+                    "nombre":"Pisos en venta",
+                    "imagen":"",
+                    "categoria_id":7
+                },
+                {
+                    "id":92,
+                    "nombre":"Chalets",
+                    "imagen":"",
+                    "categoria_id":7
+                } ,
+                {
+                    "id":93,
+                    "nombre":"Lofts",
+                    "imagen":"",
+                    "categoria_id":7
+                },
+                {
+                    "id":94,
+                    "nombre":"Chalets con piscina",
+                    "imagen":"",
+                    "categoria_id":7
+                }   ,
+                {
+                    "id":95,
+                    "nombre":"Casas prefabricadas",
+                    "imagen":"",
+                    "categoria_id":7
+                },
+                {
+                    "id":96,
+                    "nombre":"Locales en venta",
+                    "imagen":"",
+                    "categoria_id":7
+                },
+                {
+                    "id":97,
+                    "nombre":"Compartir piso ",
+                    "imagen":"",
+                    "categoria_id":7
+                },
+                {
+                    "id":98,
+                    "nombre":"Locales en alquiler",
+                    "imagen":"",
+                    "categoria_id":7
+                }
+            ]
+        },{
+            "id":9,
+            "subcategorias":[
+                {
+                    "id":99,
+                    "nombre":"Moda para hombres",
+                    "imagen":"",
+                    "categoria_id":9
+                },
+                {
+                    "id":100,
+                    "nombre":"Moda para niños",
+                    "imagen":"",
+                    "categoria_id":9
+                },
+                {
+                    "id":101,
+                    "nombre":"Moda para niñas",
+                    "imagen":"",
+                    "categoria_id":9
+                },
+                {
+                    "id":102,
+                    "nombre":"Moda juvenil",
+                    "imagen":"",
+                    "categoria_id":9
+                } 
+            ]
+        },{
+            "id":10,
+            "subcategorias":[
+                {
+                    "id":103,
+                    "nombre":"Calzados",
+                    "imagen":"",
+                    "categoria_id":10
+                },
+                {
+                    "id":104,
+                    "nombre":"Complementos",
+                    "imagen":"",
+                    "categoria_id":10
+                }   ,
+                {
+                    "id":105,
+                    "nombre":"Cosméticos",
+                    "imagen":"",
+                    "categoria_id":10
+                },
+                {
+                    "id":106,
+                    "nombre":"Joyas Busutería",
+                    "imagen":"",
+                    "categoria_id":10
+                },
+                {
+                    "id":107,
+                    "nombre":"Perfumes",
+                    "imagen":"",
+                    "categoria_id":10
+                }   ,
+                {
+                    "id":108,
+                    "nombre":"Ropas",
+                    "imagen":"",
+                    "categoria_id":10
+                },
+                {
+                    "id":109,
+                    "nombre":"Joyas Busutería",
+                    "imagen":"",
+                    "categoria_id":10
+                }
+            ]
+        },{
+            "id":12,
+            "subcategorias":[
+                {
+                    "id":110,
+                    "nombre":"Financiacíon",
+                    "imagen":"",
+                    "categoria_id":12
+                },
+                {
+                    "id":111,
+                    "nombre":"Mobilario",
+                    "imagen":"",
+                    "categoria_id":12
+                }   ,
+                {
+                    "id":113,
+                    "nombre":"Franquicias",
+                    "imagen":"",
+                    "categoria_id":12
+                },
+                {
+                    "id":114,
+                    "nombre":"Traspaso",
+                    "imagen":"",
+                    "categoria_id":12
+                },
+                {
+                    "id":115,
+                    "nombre":"Alquiler de negocio",
+                    "imagen":"",
+                    "categoria_id":12
+                }   ,
+                {
+                    "id":116,
+                    "nombre":"Comerciales independientes",
+                    "imagen":"",
+                    "categoria_id":12
+                }
+            ]
+        },{
+            "id":13,
+            "subcategorias":[
+                {
+                    "id":117,
+                    "nombre":"Caza y pesca",
+                    "imagen":"",
+                    "categoria_id":13
+                },
+                {
+                    "id":118,
+                    "nombre":"Volar",
+                    "imagen":"",
+                    "categoria_id":13
+                }   ,
+                {
+                    "id":119,
+                    "nombre":"Coleccionismo",
+                    "imagen":"",
+                    "categoria_id":13
+                },
+                {
+                    "id":120,
+                    "nombre":"Telescopios",
+                    "imagen":"",
+                    "categoria_id":13
+                },
+                {
+                    "id":115,
+                    "nombre":"Drones",
+                    "imagen":"",
+                    "categoria_id":13
+                }   ,
+                {
+                    "id":116,
+                    "nombre":"Cometas",
+                    "imagen":"",
+                    "categoria_id":13
+                }
+            ]
+        },{
+            "id":14,
+            "subcategorias":[
+                {
+                    "id":117,
+                    "nombre":"Mecanicos",
+                    "imagen":"",
+                    "categoria_id":14
+                },
+                {
+                    "id":118,
+                    "nombre":"Cursos",
+                    "imagen":"",
+                    "categoria_id":14
+                }   ,
+                {
+                    "id":119,
+                    "nombre":"Bicicletas",
+                    "imagen":"",
+                    "categoria_id":14
+                },
+                {
+                    "id":120,
+                    "nombre":"Veterinario",
+                    "imagen":"",
+                    "categoria_id":14
+                },
+                {
+                    "id":121,
+                    "nombre":"Dentistas",
+                    "imagen":"",
+                    "categoria_id":14
+                }   ,
+                {
+                    "id":122,
+                    "nombre":"Salon de belleza",
+                    "imagen":"",
+                    "categoria_id":14
+                },{
+                    "id":123,
+                    "nombre":"Gimnasios",
+                    "imagen":"",
+                    "categoria_id":14
+                }
+            ]
+        },{
+            "id":15,
+            "subcategorias":[
+                {
+                    "id":124,
+                    "nombre":"Alcatel",
+                    "imagen":"",
+                    "categoria_id":15
+                },
+                {
+                    "id":125,
+                    "nombre":"Blackberry",
+                    "imagen":"",
+                    "categoria_id":15
+                }   ,
+                {
+                    "id":126,
+                    "nombre":"HTC",
+                    "imagen":"",
+                    "categoria_id":15
+                },{
+                    "id":127,
+                    "nombre":"Huawei",
+                    "imagen":"",
+                    "categoria_id":14
+                },
+                {
+                    "id":128,
+                    "nombre":"Iphone",
+                    "imagen":"",
+                    "categoria_id":14
+                }   ,
+                {
+                    "id":129,
+                    "nombre":"LG",
+                    "imagen":"",
+                    "categoria_id":14
+                },
+                {
+                    "id":130,
+                    "nombre":"Motorola",
+                    "imagen":"",
+                    "categoria_id":14
+                },
+                {
+                    "id":131,
+                    "nombre":"Samsung",
+                    "imagen":"",
+                    "categoria_id":14
+                }   ,
+                {
+                    "id":132,
+                    "nombre":"Sony",
+                    "imagen":"",
+                    "categoria_id":14
+                },{
+                    "id":133,
+                    "nombre":"Xiaomi",
+                    "imagen":"",
+                    "categoria_id":14
+                },{
+                    "id":134,
+                    "nombre":"Otras marcas",
+                    "imagen":"",
+                    "categoria_id":14
+                },{
+                    "id":135,
+                    "nombre":"Accesorios",
+                    "imagen":"",
+                    "categoria_id":14
+                }
+            ]
+        },{
+            "id":8,
+            "subcategorias":[
+                {
+                    "id":136,
+                    "nombre":"Dardos",
+                    "imagen":"",
+                    "categoria_id":8
+                },
+                {
+                    "id":137,
+                    "nombre":"Billares",
+                    "imagen":"",
+                    "categoria_id":8
+                }   ,
+                {
+                    "id":138,
+                    "nombre":"Maquina tragaperras",
+                    "imagen":"",
+                    "categoria_id":8
+                },{
+                    "id":139,
+                    "nombre":"Xbox ",
+                    "imagen":"",
+                    "categoria_id":8
+                },
+                {
+                    "id":140,
+                    "nombre":"PSP",
+                    "imagen":"",
+                    "categoria_id":8
+                }   ,
+                {
+                    "id":141,
+                    "nombre":"Play Station ",
+                    "imagen":"",
+                    "categoria_id":8
+                },
+                {
+                    "id":142,
+                    "nombre":"Play Station 4",
+                    "imagen":"",
+                    "categoria_id":8
+                },
+                {
+                    "id":143,
+                    "nombre":"Play Station 5",
+                    "imagen":"",
+                    "categoria_id":8
+                }   ,
+                {
+                    "id":144,
+                    "nombre":"Juegos para consola",
+                    "imagen":"",
+                    "categoria_id":8
+                },{
+                    "id":145,
+                    "nombre":"Ajedrez",
+                    "imagen":"",
+                    "categoria_id":8
+                },{
+                    "id":146,
+                    "nombre":"Modelismo",
+                    "imagen":"",
+                    "categoria_id":8
+                },{
+                    "id":147,
+                    "nombre":"Otros",
+                    "imagen":"",
+                    "categoria_id":8
+                }
+            ]
+        }
+    ]
+}

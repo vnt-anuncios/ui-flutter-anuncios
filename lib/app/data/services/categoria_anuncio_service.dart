@@ -11,7 +11,7 @@ class CategoriaAnuncioService {
     this._anuncioDetailProvider,
   );
 
-  getAnuncioOfCategoria(int id) {
+  Future<List<AnuncioDetails>> getAnuncioOfCategoria(int id) {
     return _categoriaAnuncioProvider.getAnuncioForCategoria(id);
   }
 

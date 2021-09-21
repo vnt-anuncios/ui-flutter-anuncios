@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:anuncios_ui/app/data/models/anuncio_detail.dart';
 import 'package:anuncios_ui/app/data/models/foto.dart';
 import 'package:anuncios_ui/app/global/my_image_network.dart';
@@ -11,10 +10,12 @@ import 'package:url_launcher/url_launcher.dart';
 class CardAnuncio extends StatefulWidget {
   final AnuncioDetails anuncioDetails;
   final VoidCallback onPress;
+  final Widget favorito;
   CardAnuncio({
     Key? key,
     required this.anuncioDetails,
     required this.onPress,
+    required this.favorito,
   }) : super(key: key);
 
   @override
@@ -91,13 +92,7 @@ class _CardAnuncioState extends State<CardAnuncio>
                     child: Container(
                       child: Stack(
                         children: [
-                          Favorito(
-                            favo: false,
-                            onChange: (value) {
-                              print(
-                                  "on Press card anuncios" + value.toString());
-                            },
-                          ),
+                          widget.favorito,
                           Positioned.fill(
                             child: Container(
                               padding: EdgeInsets.only(top: 1.h),
@@ -250,7 +245,6 @@ class _FavoritoState extends State<Favorito> {
           setState(() {
             widget.favo = !widget.favo;
           });
-          print("change favorito " + widget.favo.toString());
           widget.onChange(widget.favo);
         },
         icon: Icon(

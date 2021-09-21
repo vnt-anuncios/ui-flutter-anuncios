@@ -1,21 +1,22 @@
-import 'package:anuncios_ui/app/global/list_item.dart';
+import 'package:anuncios_ui/app/data/models/categoria.dart';
+import 'package:anuncios_ui/app/modules/anuncios_search/controllers/anuncios_search_controller.dart';
+import 'package:anuncios_ui/app/modules/categoria/controllers/categoria_controller.dart';
 import 'package:anuncios_ui/app/modules/categoria/views/componentes/search_field.dart';
-import 'package:anuncios_ui/app/modules/principal/views/components/main_category.dart';
+import 'package:anuncios_ui/app/modules/home/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
 
 import 'package:get/get.dart';
 
-class SubCategoriaView extends GetView {
+class SubCategoriaView extends GetView<CategoriaController> {
   final int categoria;
   final String name;
   const SubCategoriaView(
       {Key? key, required this.categoria, required this.name});
   @override
   Widget build(BuildContext context) {
-    print(categoria);
-    List<CategoriaItem>? items = subCategoria[categoria];
+    List<Categoria>? subCategoria = controller.subCategoria[categoria];
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -31,15 +32,24 @@ class SubCategoriaView extends GetView {
               title: "Todas las $name",
               onPress: (value) {},
             ),
-            (items != null)
+            (subCategoria != null)
                 ? Expanded(
                     child: ListView.builder(
-                      itemCount: items.length,
+                      itemCount: subCategoria.length,
                       padding: EdgeInsets.symmetric(horizontal: 2.w),
                       itemBuilder: (context, index) {
                         return ItemSubCategoria(
-                          title: items[index].title,
-                          onPress: (value) => print("select $value"),
+                          title: subCategoria[index].nombre,
+                          onPress: (value) {
+                            Get.find<AnunciosSearchController>()
+                                .selectCategoria
+                                .value = subCategoria[index].id;
+                            Get.find<AnunciosSearchController>()
+                                .getAnuncioCategoria(subCategoria[index].id);
+                            Get.back();
+                            Get.back();
+                            Get.find<HomeController>().change(1);
+                          },
                         );
                       },
                     ),

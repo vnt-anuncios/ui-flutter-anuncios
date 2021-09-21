@@ -1,3 +1,5 @@
+import 'package:anuncios_ui/app/data/models/categoria.dart';
+import 'package:anuncios_ui/app/data/services/local/local_categoria_service.dart';
 import 'package:anuncios_ui/app/global/nuevo_categoria.dart';
 import 'package:anuncios_ui/app/global/text_title.dart';
 import 'package:anuncios_ui/app/modules/anuncios_search/controllers/anuncios_search_controller.dart';
@@ -8,6 +10,10 @@ import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
 
 class FiltrosBusquedaView extends GetView<AnunciosSearchController> {
+  final List<Categoria> categoria = Get.find<LocalCategoriaService>().categoria;
+  final Map<int, List<Categoria>> subCategoria =
+      Get.find<LocalCategoriaService>().subCategoria;
+
   Future _selectCategoria(BuildContext context, bool tipo) {
     return showDialog(
       context: context,
@@ -28,11 +34,20 @@ class FiltrosBusquedaView extends GetView<AnunciosSearchController> {
                       Expanded(
                         child: ListView.builder(
                           shrinkWrap: true,
-                          itemCount: item.length + 1,
+                          itemCount: (tipo)
+                              ? categoria.length + 1
+                              : subCategoria[controller.categoriaSelect.value]!
+                                      .length +
+                                  1,
                           itemBuilder: (context, index) => (index > 0)
                               ? RadioListTile(
                                   contentPadding: EdgeInsets.zero,
-                                  value: item[index - 1].id,
+                                  value: (tipo)
+                                      ? categoria[index - 1].id
+                                      : subCategoria[
+                                              controller.categoriaSelect.value]!
+                                          .elementAt(index - 1)
+                                          .id,
                                   groupValue: (tipo)
                                       ? controller.categoriaSelect.value
                                       : controller.subCategoriaSelect.value,
@@ -40,10 +55,19 @@ class FiltrosBusquedaView extends GetView<AnunciosSearchController> {
                                     (tipo)
                                         ? controller.increment(value!)
                                         : controller.change(value!);
-                                    Navigator.pop(context,
-                                        controller.categoriaSelect.value);
+                                    Navigator.pop(
+                                        context,
+                                        (tipo)
+                                            ? controller.categoriaSelect.value
+                                            : controller
+                                                .subCategoriaSelect.value);
                                   },
-                                  title: Text(item[index - 1].title),
+                                  title: Text((tipo)
+                                      ? categoria[index - 1].nombre
+                                      : subCategoria[
+                                              controller.categoriaSelect]!
+                                          .elementAt(index - 1)
+                                          .nombre),
                                 )
                               : RadioListTile(
                                   contentPadding: EdgeInsets.zero,
@@ -117,7 +141,7 @@ class FiltrosBusquedaView extends GetView<AnunciosSearchController> {
                     ),
                     TextTitle(
                       title: "Categorias",
-                      sizeText: 15.sp,
+                      sizeText: 14.sp,
                       color: Colors.green,
                     ),
                     SizedBox(
@@ -136,8 +160,8 @@ class FiltrosBusquedaView extends GetView<AnunciosSearchController> {
                         subTitle: TextTitleOptionCategoria(
                           label: (controller.categoriaSelect.value == 0)
                               ? "Todas las categorias"
-                              : item[controller.categoriaSelect.value - 1]
-                                  .title,
+                              : categoria[controller.categoriaSelect.value - 1]
+                                  .nombre,
                           size: 12.sp,
                           weigth: true,
                         ),
@@ -159,10 +183,16 @@ class FiltrosBusquedaView extends GetView<AnunciosSearchController> {
                         subTitle: TextTitleOptionCategoria(
                           label: (controller.subCategoriaSelect.value == 0)
                               ? "Seleccione una subcategoria"
-                              : item[controller.subCategoriaSelect.value - 1]
-                                  .title,
+                              : subCategoria[controller.categoriaSelect.value]!
+                                  .firstWhere((element) =>
+                                      element.id ==
+                                      controller.subCategoriaSelect.value)
+                                  .nombre,
                           size: 12.sp,
                           weigth: true,
+                          color: (controller.subCategoriaSelect.value == 0)
+                              ? Colors.grey
+                              : Colors.black,
                         ),
                       ),
                     ),
@@ -171,7 +201,7 @@ class FiltrosBusquedaView extends GetView<AnunciosSearchController> {
                     ),
                     TextTitle(
                       title: "Precio",
-                      sizeText: 15.sp,
+                      sizeText: 14.sp,
                       color: Colors.green,
                     ),
                     SizedBox(
@@ -233,9 +263,10 @@ class FiltrosBusquedaView extends GetView<AnunciosSearchController> {
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
-                  width: 80.w,
+                  width: 60.w,
                   child: ElevatedButton(
                     onPressed: () {
+                      controller.searchRemote();
                       Navigator.pop(context);
                     },
                     child: Text(

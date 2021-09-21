@@ -53,14 +53,19 @@ class AnunciosSearchView extends GetWidget<AnunciosSearchController> {
                           ),
                         ),
                       )
-                    : ListView.builder(
-                        itemCount: controller.listAnuncio.length,
-                        itemBuilder: (context, index) {
-                          return CardAnuncioSearch(
-                            anuncioDetails: controller.listAnuncio[index],
-                          );
-                        },
-                      ),
+                    : (controller.listAnuncio.isEmpty)
+                        ? Container(
+                            child: Center(
+                                child: Text(
+                                    "No existe anuncios en esta categorias")))
+                        : ListView.builder(
+                            itemCount: controller.listAnuncio.length,
+                            itemBuilder: (context, index) {
+                              return CardAnuncioSearch(
+                                anuncioDetails: controller.listAnuncio[index],
+                              );
+                            },
+                          ),
               ),
             ),
           ],

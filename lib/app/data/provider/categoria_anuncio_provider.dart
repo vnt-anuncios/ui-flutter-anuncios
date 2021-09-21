@@ -32,12 +32,18 @@ class CategoriaAnuncioProvider {
             User.fromMap(model["user"]),
             isFavorito,
             Categoria.fromMap(model["categoria"]),
-            null,
+            (model["destacado"] != null)
+                ? Destacado.fromMap(model["destacado"])
+                : null,
           );
         }).toList();
         return listAnuncios;
+      } else {
+        throw response.body;
       }
-    } catch (e) {}
+    } catch (e) {
+      throw e;
+    }
   }
 
   getAnuncioOrderByDestacadoFirst() async {
