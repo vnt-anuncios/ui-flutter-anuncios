@@ -1,9 +1,9 @@
 import 'dart:io';
 
 import 'package:anuncios_ui/app/data/models/anuncio.dart';
-import 'package:anuncios_ui/app/data/models/categoria.dart';
 import 'package:anuncios_ui/app/data/services/remoto/anuncios/anuncios_details_service.dart';
-import 'package:flutter_image_compress/flutter_image_compress.dart';
+import 'package:anuncios_ui/app/modules/anuncios_search/controllers/anuncios_search_controller.dart';
+import 'package:anuncios_ui/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 import 'package:multi_image_picker2/multi_image_picker2.dart';
 import 'package:path_provider/path_provider.dart';
@@ -16,6 +16,16 @@ class PublishController extends GetxController {
 
   List<Asset> get image => _images;
   set image(image) => _images = image;
+
+  RxBool _isLoading = false.obs;
+  bool get isLoading => _isLoading.value;
+  String titulo = "";
+  double precio = 0.0;
+  String condicion = "";
+  String ubicacion = "";
+  String enlace = "";
+  String descripcion = "";
+
   @override
   void onInit() {
     super.onInit();
@@ -27,28 +37,37 @@ class PublishController extends GetxController {
   }
 
   publicar() async {
-    List<File> fileImageArray = [];
-    _images.forEach((element) async {
-      final File filePath = await getImageFromAssets(element);
-      fileImageArray.add(filePath);
+    try {
+      _isLoading.value = true;
+      int id_categoria =
+          Get.find<AnunciosSearchController>().selectCategoria.value;
+      List<File> fileImageArray = [];
+      _images.forEach((element) async {
+        final File filePath = await getImageFromAssets(element);
+        fileImageArray.add(filePath);
 
-      if (fileImageArray.length == _images.length) {
-        print(fileImageArray.toString());
-        bool succes = await _anunciosDetailsService.agregarAnuncio(
-            fileImageArray,
-            Anuncio(
-              titulo: "vendedor de amburgesas",
-              precio: 0,
-              fecha_publicacion: DateTime.now(),
-              condicion: "supernuevo",
-              ubicacion: "aqui",
-              descripcion:
-                  "asdfaskjdhfkjalsjfljasbkfjaslkjfbalkjsfkjasfjkashfkjaslfhaskfhgaslkjf",
-              enlace: "url",
-            ),
-            2);
-      }
-    });
+        if (fileImageArray.length == _images.length) {
+          print(fileImageArray.toString());
+          bool succes = await _anunciosDetailsService.agregarAnuncio(
+              fileImageArray,
+              Anuncio(
+                titulo: this.titulo,
+                precio: this.precio,
+                fecha_publicacion: DateTime.now(),
+                condicion: this.condicion,
+                ubicacion: this.ubicacion,
+                descripcion: this.descripcion,
+                enlace: this.enlace,
+              ),
+              id_categoria);
+          if (succes) {
+            _isLoading.value = false;
+            Get.back();
+            Get.toNamed(Routes.MIS_ANUNCIOS);
+          }
+        }
+      });
+    } catch (e) {}
   }
 
   Future<File> getImageFromAssets(Asset image) async {
@@ -65,18 +84,4 @@ class PublishController extends GetxController {
 
   @override
   void onClose() {}
-
-  Future<File> testCompressAndGetFile(File file, String targetPath) async {
-    print("testCompressAndGetFile");
-    final result = await FlutterImageCompress.compressAndGetFile(
-      file.absolute.path,
-      targetPath,
-      quality: 30,
-      minWidth: 1024,
-      minHeight: 1024,
-      // rotate: 90,
-    );
-
-    return result!;
-  }
 }

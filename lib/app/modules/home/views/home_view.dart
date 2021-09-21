@@ -71,8 +71,12 @@ class HomeView extends GetView<HomeController> {
           height: 12.h,
           width: 12.w,
           child: FloatingActionButton(
-            onPressed: () {
+            onPressed: () async {
+              int change = controller.indexRx.value;
+              await Get.toNamed(Routes.CATEGORIA);
+
               Get.toNamed(Routes.PUBLISH);
+              controller.change(change);
             },
             backgroundColor: Colors.green,
             elevation: 2,

@@ -19,7 +19,9 @@ class MisAnunciosView extends GetWidget<MisAnunciosController> {
       ),
       body: RefreshIndicator(
         color: Colors.green,
-        onRefresh: () async {},
+        onRefresh: () async {
+          controller.getMisAnuncios();
+        },
         child: Obx(
           () => (controller.isLoading)
               ? Container(
